@@ -1,0 +1,42 @@
+.div-items {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+img {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.conte-Items {
+  height: 300px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #262626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: "Fredoka";
+  text-align: center;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+p {
+  padding: 10px;
+}
+.conte-Items:hover {
+  transform: scale(1.05);
+}
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
