@@ -5,7 +5,7 @@ import Navbar from '../components/navbar'
 import '../styles/app.css'
 
 const App = () => {
-  const { hide, setHide } = useState(0)
+  const [hide, setHide] = useState(false)
 
   const cambio = () => {
     setHide(!hide)
