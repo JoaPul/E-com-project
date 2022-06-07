@@ -28,10 +28,10 @@
   background-color: transparent;
   border: 0px;
   font-size: 23px;
-  /* border-radius: 15px; */
-  /* transition: border 0.25s ease-out; */
+  border-radius: 15px;
+  transition: box-shadow 0.25s ease-out;
 }
 .logo button:hover,
 .menu button:hover {
-  border-bottom: 3px solid #262626;
+  box-shadow: 5px 5px 3px black;
 }

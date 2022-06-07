@@ -9,7 +9,7 @@ const Navbar = ({ cambio }) => {
         <h1>Don Jaime Shop</h1>
       </div>
       <div className='menu'>
-        <button>Home</button>
+        <button>Inicio</button>
         <button>Conocenos</button>
         <button onClick={cambio}>buscador</button>
       </div>

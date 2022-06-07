@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Items from '../components/items'
 import Navbar from '../components/navbar'
 // styles
@@ -10,12 +10,6 @@ const App = () => {
   const cambio = () => {
     setHide(!hide)
   }
-
-  console.log(hide)
-
-  // useEffect(() => {
-  //   console.log(hide)
-  // }, [hide])
 
   return (
     <div className='App'>

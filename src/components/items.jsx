@@ -1,14 +1,13 @@
-// import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import useGetData from '../hooks/usegetData'
 
 // styles
 import '../styles/items.css'
 
-const Items = (esc) => {
-  // const { query } = useAppContext()
+const Items = ({ esc }) => {
   const { itemss, loading, error } = useGetData()
-  // const { esconder, setEsconder } = useState(esc)
-  // const { val, setVal } = useState(<br />)
+  const [arr, setArr] = useState(itemss)
+  // const [neww, setNew] = useState([])
 
   if (error) {
     return (<p>{error}</p>)
@@ -17,31 +16,36 @@ const Items = (esc) => {
   if (loading) {
     return (<p>...Loading</p>)
   }
-
-  // useEffect(() => {},)
+  // const rend =
 
   // useEffect(() => {
-  //   if (esconder) {
-  //     return (
-  //       setVal(<input type='text' placeholder='busca articulo' />)
-  //     )
+  //   if (loading) {
+  //     neww
   //   } else {
-  //     return setVal(<br />)
+  //     setArr(itemss)
   //   }
-  // }, [esconder])
+  // }, [loading])
+
+  const searchItems = (val) => {
+    setArr(itemss.filter(item => {
+      return item.product_name.toLowerCase().includes(val.toLocaleLowerCase())
+    }))
+  }
 
   return (
-    <section className='div-items'>
-      {/* {val} */}
-      {itemss.map((index, key) => (
-        <div key={key} className='conte-Items'>
-          <article className='card'>
-            <img src={index.image ? index.image : index.images ? index.images : 'https://pbs.twimg.com/media/FFTMAFmWYAIwYaY?format=jpg&name=large'} alt='imagen de articulo' />
-            <p>{index.product_name}</p>
-          </article>
-        </div>
-      ))}
-    </section>
+    <div className='cont-items'>
+      {esc ? <input type='text' placeholder='Busca un producto...' onChange={(event) => searchItems(event.target.value)} /> : ''}
+      <section className='div-items'>
+        {arr.map((index, key) => (
+          <div key={key} className='conte-Items'>
+            <article className='card'>
+              <img src={index.image ? index.image : index.images ? index.images : 'https://pbs.twimg.com/media/FFTMAFmWYAIwYaY?format=jpg&name=large'} alt='imagen de articulo' />
+              <p>{index.product_name}</p>
+            </article>
+          </div>
+        ))}
+      </section>
+    </div>
   )
 }
 

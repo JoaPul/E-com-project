@@ -1,3 +1,27 @@
+.cont-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex-direction: column;
+  width: 100%;
+}
+.cont-items input {
+  height: 50px;
+  width: 30%;
+  border-radius: 10px;
+  text-align: center;
+  font-family: "Fredoka";
+  font-size: 20px;
+  box-shadow: 5px 5px gray;
+  border: 0px;
+}
+.cont-items input:focus {
+  border: none;
+  outline: none;
+}
 .div-items {
   padding: 0px;
   margin: 0px;
@@ -26,13 +50,14 @@ img {
   font-family: "Fredoka";
   text-align: center;
   transform: translateZ(0);
-  transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out, box-shadow 0.25s;
 }
 p {
   padding: 10px;
 }
 .conte-Items:hover {
   transform: scale(1.05);
+  box-shadow: 5px 5px gray;
 }
 .card {
   display: flex;
