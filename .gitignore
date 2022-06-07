@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-/node_modules/electron-to-chromium/chromium-version.json
+/node_modules/electron-to-chromium/chromium-versions.json
 
 # testing
 /coverage
