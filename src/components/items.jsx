@@ -7,6 +7,7 @@ import '../styles/items.css'
 const Items = ({ esc }) => {
   const { itemss, loading, error } = useGetData()
   const [arr, setArr] = useState(itemss)
+
   // const [neww, setNew] = useState([])
 
   if (error) {
@@ -16,6 +17,9 @@ const Items = ({ esc }) => {
   if (loading) {
     return (<p>...Loading</p>)
   }
+
+
+
   // const rend =
 
   // useEffect(() => {
