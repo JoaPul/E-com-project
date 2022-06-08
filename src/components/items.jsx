@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import useGetData from '../hooks/usegetData'
 
 // styles
@@ -17,8 +17,6 @@ const Items = ({ esc }) => {
   if (loading) {
     return (<p>...Loading</p>)
   }
-
-
 
   // const rend =
 
