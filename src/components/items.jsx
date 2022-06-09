@@ -7,6 +7,7 @@ import '../styles/items.css'
 const Items = ({ esc }) => {
   const { itemss, loading, error } = useGetData()
   const [arr, setArr] = useState([])
+  const [vali, setVali] = useState(false)
 
   if (error) {
     return (<p>{error}</p>)
@@ -20,22 +21,29 @@ const Items = ({ esc }) => {
     )
   }
 
-  setTimeout(() => {
-    setArr(itemss)
-  }, 4000)
+  const Espera = () => {
+    setTimeout(() => {
+      setArr(itemss)
+      setVali(true)
+    }, 4000)
+
+    return <p className='spinner-1'>...Loading page</p>
+  }
 
   const searchItems = (val) => {
+    // console.log(val)
     setArr(itemss.filter(item => {
-      return item.product_name.toLowerCase().includes(val.toLocaleLowerCase())
+      return item.product_name.toLowerCase().match(val.toLocaleLowerCase())
     }))
+    console.log(arr)
   }
 
   return (
     <div className='cont-items'>
       {esc ? <input type='text' placeholder='Busca un producto...' onChange={(event) => searchItems(event.target.value)} /> : ''}
       <section className='div-items'>
-        {arr !== itemss
-          ? <p className='spinner-1'>...Loading page</p>
+        {!vali
+          ? Espera()
           : arr.map((index, key) => (
             <div key={key} className='conte-Items'>
               <article className='card'>

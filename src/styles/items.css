@@ -63,7 +63,7 @@ p {
 }
 .conte-Items:hover {
   transform: scale(1.05);
-  box-shadow: 5px 5px gray;
+  box-shadow: 5px 5px gray, -5px -5px gray;
 }
 .card {
   display: flex;

@@ -8,6 +8,9 @@
   background-color: #595959;
   margin-bottom: 20px;
 }
+.menu button {
+  color: #bfbfbf;
+}
 .menu,
 .logo {
   display: flex;
@@ -17,9 +20,11 @@
   height: 100%;
   gap: 20px;
 }
+
 .logo h1 {
-  border-bottom: 7px solid black;
-  border-top: 7px solid black;
+  border-bottom: 7px solid #bfbfbf;
+  border-top: 7px solid #bfbfbf;
+  color: #bfbfbf;
 }
 
 .logo button,
@@ -29,9 +34,10 @@
   border: 0px;
   font-size: 23px;
   border-radius: 15px;
-  transition: box-shadow 0.25s ease-out;
+  transition: box-shadow 0.25s ease-out, color 0.25s ease-out;
 }
 .logo button:hover,
 .menu button:hover {
-  box-shadow: 5px 5px 3px black;
+  color: white;
+  box-shadow: 5px 5px 3px #bfbfbf, -5px -5px 3px #bfbfbf;
 }
