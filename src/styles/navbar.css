@@ -34,10 +34,11 @@
   border: 0px;
   font-size: 23px;
   border-radius: 15px;
-  transition: box-shadow 0.25s ease-out, color 0.25s ease-out;
+  transition: box-shadow 0.25s ease-out, color 0.25s ease-out, border 0.25s ease-out;
 }
 .logo button:hover,
 .menu button:hover {
   color: white;
-  box-shadow: 5px 5px 3px #bfbfbf, -5px -5px 3px #bfbfbf;
+  border: 3px solid white;
+  /* box-shadow: 5px 5px 3px #bfbfbf; */
 }
