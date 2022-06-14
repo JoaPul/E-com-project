@@ -1,4 +1,5 @@
-import { useState } from 'react'
+
+import { useState, useEffect } from 'react'
 import useGetData from '../hooks/usegetData'
 
 // styles
@@ -20,13 +21,15 @@ const Items = ({ esc }) => {
     )
   }
 
-  setTimeout(() => {
-    setArr(itemss)
-  }, 4000)
+  useEffect(() => {
+    setTimeout(() => {
+      setArr(itemss)
+    }, 4000)
+  }, [])
 
   const searchItems = (val) => {
     setArr(itemss.filter(item => {
-      return item.product_name.toLowerCase().includes(val.toLocaleLowerCase())
+      return item.product_name.toLowerCase().match(val.toLocaleLowerCase())
     }))
   }
 

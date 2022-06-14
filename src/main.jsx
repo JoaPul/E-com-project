@@ -7,7 +7,7 @@ import './styles/index.css'
 import App from './pages/App'
 // Paths
 // Context
-import { ContextProvider } from './context'
+import { ContextProvider } from './context/AppContext'
 
 const root = document.getElementById('root')
 const container = createRoot(root)
