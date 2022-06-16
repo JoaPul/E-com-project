@@ -1,18 +1,37 @@
+/*Contenedor de todo el navbar*/
 .nav {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
   width: 100%;
-  border-bottom: 5px solid #262626;
+  height: 100px;
+  border-bottom: 2px solid #262626;
   background-color: #595959;
   margin-bottom: 20px;
 }
+
+/*Contenedores de menu y logo*/
+.menu {
+  padding-right: 20px;
+}
+
+.logo {
+  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: transform .25s ease-out;
+  height: 80px;
+}
+
 .menu button {
   color: #bfbfbf;
+  font-family: "Fredoka";
 }
-.menu,
-.logo {
+
+.menu {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -21,13 +40,23 @@
   gap: 20px;
 }
 
-.logo h1 {
-  border-bottom: 7px solid #bfbfbf;
-  border-top: 7px solid #bfbfbf;
+.logo h1,
+.logo p {
+  font-family: "Fredoka";
   color: #bfbfbf;
+  margin: 0px;
+  padding: 0px;
+  z-index: 4;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  user-select: none;
 }
 
-.logo button,
+.logo h1 {
+  font-size: 20px;
+  padding-top: 10px;
+}
+
 .menu button {
   padding: 10px;
   background-color: transparent;
@@ -36,9 +65,25 @@
   border-radius: 15px;
   transition: box-shadow 0.25s ease-out, color 0.25s ease-out, border 0.25s ease-out;
 }
-.logo button:hover,
+
 .menu button:hover {
   color: white;
   border: 3px solid white;
   /* box-shadow: 5px 5px 3px #bfbfbf; */
+}
+
+/*Imagen de bolsita de compras en navbar*/
+.logoImg {
+  height: 70px;
+  width: 50px;
+  position: absolute;
+}
+
+/*Logo hover y animación*/
+.logo:hover {
+  transform: scale(1.3);
+  /* animation-name: logoAnim;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: alternate; */
 }

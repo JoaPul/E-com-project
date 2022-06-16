@@ -4,18 +4,18 @@ import { BrowserRouter } from 'react-router-dom'
 // Styles
 import './styles/index.css'
 // components
-import App from './pages/App'
-// Paths
 // Context
-import { ContextProvider } from './context/AppContext'
+// import { ContextProvider } from './context/AppContext'
+// Path
+import Path from './routes'
 
 const root = document.getElementById('root')
 const container = createRoot(root)
 
 container.render(
   <StrictMode>
-    <ContextProvider>
-      <App />
-    </ContextProvider>
+    <BrowserRouter>
+      <Path />
+    </BrowserRouter>
   </StrictMode>
 )

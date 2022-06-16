@@ -22,6 +22,7 @@
   box-shadow: 5px 5px gray;
   border: 0px;
 }
+
 .cont-items input:focus {
   border: 3px solid black;
   outline: none;
@@ -38,33 +39,39 @@
   flex-wrap: wrap;
   gap: 20px;
 }
-img {
+
+article img {
   height: 150px;
   width: 150px;
-  object-fit: cover;
+  object-fit: scale-down;
   border-radius: 10px;
 }
+
 .conte-Items {
   height: 300px;
   width: 200px;
   border-radius: 10px;
-  background-color: #262626;
+  border: 2px solid #8c8c8c;
+  background-color: #d9d9d9;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #262626;
   font-family: "Fredoka";
   text-align: center;
   transform: translateZ(0);
   transition: transform 0.25s ease-out, box-shadow 0.25s;
 }
+
 p {
   padding: 10px;
 }
+
 .conte-Items:hover {
   transform: scale(1.05);
   box-shadow: 5px 5px gray;
 }
+
 .card {
   display: flex;
   justify-content: center;
@@ -102,5 +109,78 @@ p {
 @keyframes spinner {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/*Spinner 2 con logo*/
+.spinCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contlogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  top: 120px;
+}
+
+.spinnerLogoImg {
+  height: 200px;
+  width: 150px;
+  position: absolute;
+  animation: imgAnim 4s linear infinite alternate;
+}
+
+.contlogo h1,
+.contlogo p {
+  font-family: "Fredoka";
+  color: white;
+  margin: 0px;
+  padding: 0px;
+  z-index: 4;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  user-select: none;
+  animation: textAnim 4s linear infinite alternate;
+}
+
+.contlogo h1 {
+  font-size: 50px;
+  padding-top: 20px;
+}
+
+.contlogo p {
+  font-size: 27px;
+  padding-top: 10px;
+}
+
+@keyframes textAnim {
+  0% {
+    color: transparent;
+    transform: scale(.9);
+  }
+
+  50% {
+    color: white;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes imgAnim {
+  0% {
+    color: transparent;
+    transform: scale(.9);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
