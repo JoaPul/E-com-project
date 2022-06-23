@@ -1,5 +1,7 @@
 // pages
 import App from './pages/App'
+import Item from './pages/item'
+import { About } from './pages/About'
 
 // componentes
 import Items from './components/items'
@@ -23,8 +25,16 @@ const Path = () => {
         {
           element: <Items />,
           index: true
+        },
+        {
+          path: 'item/:name',
+          element: <Item />
         }
       ]
+    },
+    {
+      path: '/About',
+      element: <About />
     },
     // componente "page not found"
     {

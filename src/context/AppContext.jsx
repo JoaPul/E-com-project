@@ -4,46 +4,24 @@ const AppContext = createContext(null)
 
 // el que comunica a todos los componentes
 const AppProvider = ({ children }) => {
-  // Estado inicial de todos los articulos
+  // Informacion de Articulo seleccionado(primera posicion), link de imagen para el articulo(segunda posicion)
   const [items, setItems] = useState([])
-  // Estado de los aarticulos filtrados con los que hizo match
-  const [filterItems, setFilterItems] = useState([])
-  // Mensaje de error si no encontro ningun match con la busqueda
-  const [sms, setSms] = useState({ type: '' })
   // estado para aparecer el buscador
   const [hide, setHide] = useState(false)
+  // lista de carrito
+  const [cart, setCart] = useState([])
 
-  // const cambio = () => {
-  //   setHide(!hide)
+  // const addToCart = (index) => {
+  //   setCart([...cart, index])
   // }
-
-  const handleFilterItems = (value) => {
-    const filtered = items.filter((item) => {
-      return item.product_name.toLowerCase().match(value.toLowerCase())
-    })
-
-    if (filtered.length === 0) {
-      setFilterItems([])
-      setSms({
-        type: 'error',
-        message: 'Search not found'
-      })
-    } else {
-      setFilterItems(filtered)
-      setSms({
-        type: 'success',
-        message: 'Countries found'
-      })
-    }
-  }
 
   const initialValue = {
     setItems,
-    handleFilterItems,
     setHide,
-    hide,
-    filterItems,
-    sms
+    setCart,
+    cart,
+    items,
+    hide
   }
   return (
     <AppContext.Provider value={initialValue}>

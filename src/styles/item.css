@@ -1,0 +1,16 @@
+.articuloInd {
+  display: flex;
+  margin: 20px;
+}
+
+.imgArt img {
+  width: 466px;
+  height: 492px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.infArt {
+  margin-left: 10px;
+  font-family: "Fredoka";
+}

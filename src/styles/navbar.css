@@ -17,16 +17,18 @@
 }
 
 .logo {
+  text-decoration: none;
   padding-left: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: transform .25s ease-out;
+  transition: transform .25s ease-out, color .25s ease-out;
   height: 80px;
+  color: #bfbfbf;
 }
 
-.menu button {
+.btn {
   color: #bfbfbf;
   font-family: "Fredoka";
 }
@@ -43,7 +45,6 @@
 .logo h1,
 .logo p {
   font-family: "Fredoka";
-  color: #bfbfbf;
   margin: 0px;
   padding: 0px;
   z-index: 4;
@@ -57,20 +58,21 @@
   padding-top: 10px;
 }
 
-.menu button {
+.btn {
+  text-decoration: none;
   padding: 10px;
+  padding-bottom: 0px;
   background-color: transparent;
   border: 0px;
   font-size: 23px;
-  border-radius: 15px;
-  transition: box-shadow 0.25s ease-out, color 0.25s ease-out, border 0.25s ease-out;
+  transition: color 0.25s ease-out, border-bottom 0.25s ease-in-out;
 }
 
-.menu button:hover {
+.btn:hover {
   color: white;
-  border: 3px solid white;
-  /* box-shadow: 5px 5px 3px #bfbfbf; */
+  border-bottom: 3px solid white;
 }
+
 
 /*Imagen de bolsita de compras en navbar*/
 .logoImg {
@@ -82,6 +84,7 @@
 /*Logo hover y animación*/
 .logo:hover {
   transform: scale(1.3);
+  color: white;
   /* animation-name: logoAnim;
   animation-duration: 1s;
   animation-iteration-count: 1;

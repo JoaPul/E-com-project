@@ -1,0 +1,31 @@
+.ContAbout {
+  /* padding: 20px;
+  padding-top: 0px; */
+  font-family: 'Fredoka';
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ContAbout .contLog {
+  background-color: #595959;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 2px solid #262626;
+}
+
+.ContAbout>h1,
+.ContAbout>h2 {
+  Color: white;
+}
+
+.ContAbout .logo {
+  /* color: #bfbfbf; */
+  padding-left: 0;
+}
+
+.ContAbout ul {
+  text-align: left;
+}

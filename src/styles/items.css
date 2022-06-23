@@ -12,9 +12,16 @@
 }
 
 /*Buscador*/
+.searchForm {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 50%;
+}
+
 .cont-items input {
   height: 50px;
-  width: 30%;
+  width: 80%;
   border-radius: 10px;
   text-align: center;
   font-family: "Fredoka";
@@ -26,6 +33,37 @@
 .cont-items input:focus {
   border: 3px solid black;
   outline: none;
+}
+
+.searchBTN {
+  background-color: #595959;
+  font-family: 'Fredoka';
+  font-size: 18px;
+  border-radius: 20px;
+  box-shadow: 5px 5px #808080;
+  color: white;
+  border: 1px;
+  transition: background-color .25s ease-out;
+}
+
+.searchBTN:hover {
+  background-color: #383838;
+}
+
+
+/*Mensaje debajo del buscador*/
+.Finded {
+  background-color: rgb(17, 118, 17);
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+
+.NotFinded {
+  background-color: rgb(109, 31, 31);
+  color: white;
+  text-align: center;
+  width: 100%;
 }
 
 /*Contenedor de articulos*/
@@ -43,7 +81,8 @@
 article img {
   height: 150px;
   width: 150px;
-  object-fit: scale-down;
+  object-fit: cover;
+  /* object-fit: scale-down; */
   border-radius: 10px;
 }
 
@@ -59,12 +98,14 @@ article img {
   color: #262626;
   font-family: "Fredoka";
   text-align: center;
+  text-decoration: none;
   transform: translateZ(0);
   transition: transform 0.25s ease-out, box-shadow 0.25s;
 }
 
 p {
   padding: 10px;
+  margin: 0;
 }
 
 .conte-Items:hover {
@@ -79,38 +120,6 @@ p {
   flex-direction: column;
 }
 
-/*Spiner 1*/
-
-.spinner-1 {
-  font-family: "Fredoka";
-  /* position: absolute;
-  top: 50%; */
-  margin-top: 30px;
-  text-align: center;
-  font-size: 30px;
-}
-
-.spinner-1:before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 100px;
-  width: 100px;
-  margin-top: -50px;
-  margin-left: -50px;
-  border-radius: 50%;
-  border: 3px solid lightgray;
-  border-top-color: #262626;
-  animation: spinner 0.7s linear infinite;
-}
-
-@keyframes spinner {
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 /*Spinner 2 con logo*/
 .spinCont {
@@ -144,7 +153,7 @@ p {
   padding: 0px;
   z-index: 4;
   text-decoration: underline;
-  text-decoration-thickness: 3px;
+  text-decoration-thickness: 5px;
   user-select: none;
   animation: textAnim 4s linear infinite alternate;
 }
