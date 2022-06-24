@@ -8,6 +8,8 @@ import Items from './components/items'
 
 // funcioines de librerias
 import { Navigate, useRoutes } from 'react-router-dom'
+import { Wishlist } from './pages/Wishlist'
+import { Cart } from './pages/Cart'
 
 // Items recibe un prop llamado 'esc'
 // que es un estado que controla si aparece el buscador o no,
@@ -29,6 +31,14 @@ const Path = () => {
         {
           path: 'item/:name',
           element: <Item />
+        },
+        {
+          path: 'Wishlist',
+          element: <Wishlist />
+        },
+        {
+          path: 'Cart',
+          element: <Cart />
         }
       ]
     },

@@ -14,3 +14,36 @@
   margin-left: 10px;
   font-family: "Fredoka";
 }
+
+.actions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.actions button img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+}
+
+.actions button {
+  padding: 20px;
+  background-color: #8C8C8C;
+  font-size: 20px;
+  font-family: 'Fredoka';
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  border: 3px solid #454545;
+  transition: background-color .25s ease-out, box-shadow .25s ease-out, color .25s ease-out;
+}
+
+.actions button:hover {
+  background-color: #404040;
+  box-shadow: 5px 5px #8C8C8C;
+  color: white;
+
+}

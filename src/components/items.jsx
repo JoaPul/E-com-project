@@ -97,7 +97,7 @@ const Items = () => {
                 <div className='infoPro'>
                   <p>{index.product_name}</p>
                   {/* <br /> */}
-                  <p>$<span style={{ textDecoration: 'underline', textDecorationThickness: '2px', fontSize: '20px', fontWeight: '1000' }}>{index.price}</span></p>
+                  <p><span style={{ textDecoration: 'underline', textDecorationThickness: '2px', fontSize: '20px', fontWeight: '1000' }}>${index.price}</span></p>
                 </div>
               </article>
             </Link>

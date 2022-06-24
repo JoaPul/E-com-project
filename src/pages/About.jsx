@@ -10,8 +10,10 @@ export const About = () => {
       <div className='contLog'>
         <Link className='logo' to='/'>
           <img className='logoImg' src='src/assets/bag.png' alt='bag logo img' />
-          <h1>DON JAIME</h1>
-          <p>store</p>
+          <div className='logoText'>
+            <h1>DON JAIME</h1>
+            <p>store</p>
+          </div>
         </Link>
       </div>
       <h1>Jaime store was made as a bootcamp Project</h1>

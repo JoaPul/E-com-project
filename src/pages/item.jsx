@@ -5,7 +5,11 @@ import useAppContext from '../hooks/useAppContext'
 import '../styles/item.css'
 
 const Item = () => {
-  const { items, setCart, cart } = useAppContext()
+  const { items, setCart, cart, fav, setFav } = useAppContext()
+
+  useEffect(() => {
+    console.log(fav)
+  }, [fav])
 
   useEffect(() => {
     console.log(cart)
@@ -28,7 +32,14 @@ const Item = () => {
         <p style={{ width: '70%' }}><span style={{ fontWeight: '1000' }}>Description:</span> {items[0].description}</p>
         <br />
         <div className='actions'>
-          <button onClick={() => setCart([...cart, items[0]])}>Add to cart 🛒</button>
+          <button onClick={() => setCart([...cart, items])}>
+            <img src='../../src/assets/CarritoBlanc.png' alt='Imagen carrito de compras' />
+            Add to cart
+          </button>
+          <button onClick={() => setFav([...fav, items])}>
+            <img src='../../src/assets/CoraW.png' alt='Icono de vfavoritos' />
+            Add to Wish List
+          </button>
         </div>
       </div>
     </section>

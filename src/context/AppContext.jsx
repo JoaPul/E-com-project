@@ -10,6 +10,8 @@ const AppProvider = ({ children }) => {
   const [hide, setHide] = useState(false)
   // lista de carrito
   const [cart, setCart] = useState([])
+  // lista de favoritos
+  const [fav, setFav] = useState([])
 
   // const addToCart = (index) => {
   //   setCart([...cart, index])
@@ -19,6 +21,8 @@ const AppProvider = ({ children }) => {
     setItems,
     setHide,
     setCart,
+    setFav,
+    fav,
     cart,
     items,
     hide
