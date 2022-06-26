@@ -13,20 +13,38 @@ const AppProvider = ({ children }) => {
   // lista de favoritos
   const [fav, setFav] = useState([])
 
-  // const addToCart = (index) => {
-  //   setCart([...cart, index])
-  // }
+  const addToCart = (index) => {
+    setCart([...cart, index])
+  }
+
+  const addToWish = (index) => {
+    setFav([...fav, index])
+  }
+
+  const filterCart = (index) => {
+    setCart(() => cart.filter((elem) => {
+      return elem !== index
+    }))
+  }
+  const filterWish = (index) => {
+    setFav(() => fav.filter((elem) => {
+      return elem !== index
+    }))
+  }
 
   const initialValue = {
     setItems,
     setHide,
-    setCart,
-    setFav,
+    addToCart,
+    addToWish,
+    filterCart,
+    filterWish,
     fav,
     cart,
     items,
     hide
   }
+
   return (
     <AppContext.Provider value={initialValue}>
       {children}

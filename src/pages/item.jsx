@@ -1,19 +1,11 @@
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import useAppContext from '../hooks/useAppContext'
 
 // styles
 import '../styles/item.css'
 
 const Item = () => {
-  const { items, setCart, cart, fav, setFav } = useAppContext()
-
-  useEffect(() => {
-    console.log(fav)
-  }, [fav])
-
-  useEffect(() => {
-    console.log(cart)
-  }, [cart])
+  const { items, addToCart, addToWish } = useAppContext()
 
   return (
     <section className='articuloInd'>
@@ -32,11 +24,11 @@ const Item = () => {
         <p style={{ width: '70%' }}><span style={{ fontWeight: '1000' }}>Description:</span> {items[0].description}</p>
         <br />
         <div className='actions'>
-          <button onClick={() => setCart([...cart, items])}>
+          <button onClick={() => addToCart(items)}>
             <img src='../../src/assets/CarritoBlanc.png' alt='Imagen carrito de compras' />
             Add to cart
           </button>
-          <button onClick={() => setFav([...fav, items])}>
+          <button onClick={() => addToWish(items)}>
             <img src='../../src/assets/CoraW.png' alt='Icono de vfavoritos' />
             Add to Wish List
           </button>
