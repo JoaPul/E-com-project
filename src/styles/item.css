@@ -47,3 +47,7 @@
   color: white;
 
 }
+
+.actions button:active {
+  background-color: #5e5e5e;
+}

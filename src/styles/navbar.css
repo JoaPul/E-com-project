@@ -12,9 +12,9 @@
 }
 
 /*Contenedores de menu y logo*/
-.menu {
+/* .menu {
   padding-right: 20px;
-}
+} */
 
 .logo {
   text-decoration: none;
@@ -58,8 +58,11 @@
   padding-top: 10px;
 }
 
-.btn {
+.btn,
+.btnL-selected {
+  font-family: "Fredoka";
   text-decoration: none;
+  margin-right: 5px;
   padding: 10px;
   padding-bottom: 0px;
   background-color: transparent;
@@ -70,6 +73,12 @@
 }
 
 .btn:hover {
+  filter: contrast(100%);
+  color: white;
+  border-bottom: 3px solid white;
+}
+
+.btnL-selected {
   filter: contrast(100%);
   color: white;
   border-bottom: 3px solid white;
@@ -117,16 +126,21 @@
 .favoritos img:hover {
   border-bottom: 3px solid white;
   filter: contrast(100%);
-
 }
 
 .user img,
 .carrito img,
-.favoritos img {
+.favoritos img,
+.btnI-selected img {
   height: 25px;
   width: 27px;
   padding-top: 10px;
   padding-bottom: 5px;
   filter: contrast(50%);
   transition: border-bottom .25s ease-out, contrast .25s ease-out;
+}
+
+.btnI-selected img {
+  border-bottom: 3px solid white;
+  filter: contrast(100%);
 }

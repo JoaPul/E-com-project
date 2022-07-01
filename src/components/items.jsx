@@ -27,7 +27,7 @@ const Items = () => {
     setTimeout(() => {
       setArr(itemss)
       setVali(true)
-    }, 4000)
+    }, 2000)
     return (
       <section className='spinCont'>
         <p style={{ fontFamily: 'Fredoka', fontSize: '20px' }}>Loading...</p>

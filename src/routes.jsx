@@ -2,6 +2,7 @@
 import App from './pages/App'
 import Item from './pages/item'
 import { About } from './pages/About'
+import { Login } from './pages/Login'
 
 // componentes
 import Items from './components/items'
@@ -45,6 +46,10 @@ const Path = () => {
     {
       path: '/About',
       element: <About />
+    },
+    {
+      path: '/Login',
+      element: <Login />
     },
     // componente "page not found"
     {

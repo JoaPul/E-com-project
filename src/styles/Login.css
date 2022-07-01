@@ -1,0 +1,64 @@
+.Cont-Login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.form {
+  font-family: 'Fredoka';
+  border: 3px solid black;
+  box-shadow: 5px 5px #404040;
+  border-radius: 20px;
+  height: 30vh;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #8C8C8C;
+}
+
+.form h3 {
+  font-size: 30px;
+  color: white;
+  margin: 0px;
+}
+
+.cont-inp {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-input {
+  font-family: 'Fredoka';
+  height: 30px;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 5px 5px #404040;
+  padding-left: 10px;
+  font-size: 18px;
+}
+
+.form-input:hover {
+  border: 3px solid #F2DCB3;
+}
+
+.Login-btn {
+  height: 50px;
+  width: 100px;
+  border-radius: 10px;
+  box-shadow: 5px 5px #404040;
+  font-family: 'Fredoka';
+  font-size: 20px;
+}
+
+
+.Login-btn:hover {
+  background-color: #D2D9D2;
+}
+
+.Login-btn:active {
+  background-color: #F2DCB3;
+}

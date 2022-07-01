@@ -12,6 +12,8 @@ const AppProvider = ({ children }) => {
   const [cart, setCart] = useState([])
   // lista de favoritos
   const [fav, setFav] = useState([])
+  // Estado para cambiar de color, botones de navBar
+  const [colo, setColo] = useState('menu')
 
   const addToCart = (index) => {
     setCart([...cart, index])
@@ -35,10 +37,12 @@ const AppProvider = ({ children }) => {
   const initialValue = {
     setItems,
     setHide,
+    setColo,
     addToCart,
     addToWish,
     filterCart,
     filterWish,
+    colo,
     fav,
     cart,
     items,

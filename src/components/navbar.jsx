@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom'
 import '../assets/bag.png'
 import '../styles/navbar.css'
 
-const Navbar = () => {
-  const { hide, setHide } = useAppContext()
+const Navbar = ({ about = '' }) => {
+  const { hide, setHide, colo, setColo } = useAppContext()
 
   return (
     <header className='nav'>
       <div className='menu'>
-        <Link className='btn' to='/items'>Home</Link>
-        <Link className='btn' to='/About'>About</Link>
-        <button className='btn' onClick={() => setHide(!hide)}>
+        <Link className={about === '' && colo === 'menu' ? 'btnL-selected' : 'btn'} onClick={() => setColo('menu')} to='/items'>Home</Link>
+        <Link className={about === 'About' ? 'btnL-selected' : 'btn'} onClick={() => setColo('About')} to='/About'>About</Link>
+        <button className={hide ? 'btnL-selected' : 'btn'} onClick={() => setHide(!hide)}>
           {/* <img className='btnImgp' src='src/assets/lupa plomo.png' alt='Search button' style={{ height: '20px', width: '20px' }} /> */}
           <img className='btnImgb' src='../../src/assets/lupaBlanca.png' alt='Search button' style={{ height: '20px', width: '20px' }} />
         </button>
@@ -27,9 +27,9 @@ const Navbar = () => {
         </div>
       </Link>
       <div className='perfil'>
-        <button className='user'><img src='../../src/assets/User.png' alt='Imagen carrito de compras' /></button>
-        <Link className='carrito' to='Cart'><img src='../../src/assets/CarritoBlanc.png' alt='Imagen carrito de compras' /></Link>
-        <Link className='favoritos' to='Wishlist'><img src='../../src/assets/CoraW.png' alt='Icono de favoritos' /></Link>
+        <Link className={about === 'user' ? 'btnI-selected' : 'user'} to='/Login'><img src='../../src/assets/User.png' alt='Imagen carrito de compras' /></Link>
+        <Link className={colo === 'cart' ? 'btnI-selected' : 'carrito'} onClick={() => setColo('cart')} to='Cart'><img src='../../src/assets/CarritoBlanc.png' alt='Imagen carrito de compras' /></Link>
+        <Link className={colo === 'wish' ? 'btnI-selected' : 'favoritos'} onClick={() => setColo('wish')} to='Wishlist'><img src='../../src/assets/CoraW.png' alt='Icono de favoritos' /></Link>
       </div>
     </header>
   )
