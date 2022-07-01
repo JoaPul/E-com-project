@@ -27,7 +27,7 @@ const Navbar = ({ about = '' }) => {
         </div>
       </Link>
       <div className='perfil'>
-        <Link className={about === 'user' ? 'btnI-selected' : 'user'} to='/Login'><img src='../../src/assets/User.png' alt='Imagen carrito de compras' /></Link>
+        <Link className={about === 'user' ? 'btnI-selected' : 'user'} to='/User/Login'><img src='../../src/assets/User.png' alt='Imagen carrito de compras' /></Link>
         <Link className={colo === 'cart' ? 'btnI-selected' : 'carrito'} onClick={() => setColo('cart')} to='Cart'><img src='../../src/assets/CarritoBlanc.png' alt='Imagen carrito de compras' /></Link>
         <Link className={colo === 'wish' ? 'btnI-selected' : 'favoritos'} onClick={() => setColo('wish')} to='Wishlist'><img src='../../src/assets/CoraW.png' alt='Icono de favoritos' /></Link>
       </div>

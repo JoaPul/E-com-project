@@ -2,15 +2,18 @@
 import App from './pages/App'
 import Item from './pages/item'
 import { About } from './pages/About'
-import { Login } from './pages/Login'
+import { User } from './pages/User'
 
 // componentes
 import Items from './components/items'
+import { Wishlist } from './pages/Wishlist'
+import { Cart } from './pages/Cart'
+import { Login } from './components/Login'
+import Signup from './components/Signup'
+import { Profile } from './components/Profile'
 
 // funcioines de librerias
 import { Navigate, useRoutes } from 'react-router-dom'
-import { Wishlist } from './pages/Wishlist'
-import { Cart } from './pages/Cart'
 
 // Items recibe un prop llamado 'esc'
 // que es un estado que controla si aparece el buscador o no,
@@ -48,8 +51,23 @@ const Path = () => {
       element: <About />
     },
     {
-      path: '/Login',
-      element: <Login />
+      path: '/User',
+      element: <User />,
+      children: [
+        {
+          path: 'Login',
+          element: <Login />,
+          index: true
+        },
+        {
+          path: 'Profile/:name',
+          element: <Profile />
+        },
+        {
+          path: 'SignUp',
+          element: <Signup />
+        }
+      ]
     },
     // componente "page not found"
     {

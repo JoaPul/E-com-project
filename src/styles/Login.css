@@ -5,7 +5,8 @@
   height: 80vh;
 }
 
-.form {
+.form,
+.form-SignUp {
   font-family: 'Fredoka';
   border: 3px solid black;
   box-shadow: 5px 5px #404040;
@@ -17,9 +18,15 @@
   justify-content: space-around;
   align-items: center;
   background-color: #8C8C8C;
+  /* background-color: rgb(237, 88, 88); */
 }
 
-.form h3 {
+.form-SignUp {
+  height: 50vh;
+}
+
+.form h3,
+.form-SignUp h3 {
   font-size: 30px;
   color: white;
   margin: 0px;

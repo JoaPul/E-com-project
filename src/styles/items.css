@@ -142,7 +142,7 @@ p {
   height: 200px;
   width: 150px;
   position: absolute;
-  animation: imgAnim 4s linear infinite alternate;
+  animation: imgAnim 1s linear infinite alternate;
 }
 
 .contlogo h1,
@@ -155,7 +155,7 @@ p {
   text-decoration: underline;
   text-decoration-thickness: 5px;
   user-select: none;
-  animation: textAnim 4s linear infinite alternate;
+  animation: textAnim 1s linear infinite alternate;
 }
 
 .contlogo h1 {
