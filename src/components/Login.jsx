@@ -22,8 +22,7 @@ export const Login = () => {
       setError(error)
     }
     // checa que si este mandado la info correcta
-    console.log(email)
-    console.log(password)
+    // console.log(user)
     // reinicia los vlaores del estado de password
     setPassword('')
   }

@@ -1,5 +1,8 @@
 import axios from 'axios'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
+
+// utils jwt
+import { isValidToken } from '../utils/jwt'
 
 // El que tiene los valos guardados
 const AuthContext = createContext(null)
@@ -10,6 +13,11 @@ const AuthProvider = ({ children }) => {
   const [authed, setAuthed] = useState(false)
   // checa cada que se actualiza la pagina si se quedo un token en local storage
   const [init, setInit] = useState(false)
+  // estado para guardar el token y el id del usuario cuando ya haga login
+  const [token, setToken] = useState('')
+  const [id, setId] = useState('none')
+  // estado para guardar la información del usuario
+  const [user, setUser] = useState('')
 
   const loginAuth = async (email, password) => {
     const response = await axios.post('https://ecomerce-master.herokuapp.com/api/v1/login', {
@@ -17,13 +25,25 @@ const AuthProvider = ({ children }) => {
       password
     })
     // respuesta de axios
-    const user = response.data
-    console.log(user)
+    setId(isValidToken(response.data.token))
+    setToken(response.data.token)
     setAuthed(true)
+    setUser(await axios.get(`https://ecomerce-master.herokuapp.com/api/v1/user/${id}`, {
+      headers: {
+        Authorization: `JWT ${token}`
+      }
+    }))
   }
 
+  useEffect(() => {
+    if (user !== '') {
+      console.log(user)
+    }
+  }, [user])
+
   const initialValues = {
-    loginAuth
+    loginAuth,
+    user
   }
 
   return (
