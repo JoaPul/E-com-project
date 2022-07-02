@@ -59,6 +59,7 @@
   box-shadow: 5px 5px #404040;
   font-family: 'Fredoka';
   font-size: 20px;
+  text-decoration: none;
 }
 
 
@@ -68,4 +69,20 @@
 
 .Login-btn:active {
   background-color: #F2DCB3;
+}
+
+.userFinded {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  font-family: 'Fredoka';
+  gap: 20px;
+  text-decoration: none;
+}
+
+.userFinded h1 {
+  color: white;
+  font-size: 30px;
 }

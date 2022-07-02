@@ -10,26 +10,29 @@ import Navbar from '../components/navbar'
 
 // styles
 import '../styles/app.css'
+import { AuthProvider } from '../context/AuthContext'
 
 const App = () => {
   return (
     <AppProvider>
-      <Navbar />
-      <div className='App'>
-        <Suspense fallback={
-          <section className='spinCont'>
-            <p style={{ fontFamily: 'Fredoka', fontSize: '20px' }}>Loading...</p>
-            <div className='contlogo'>
-              <img className='spinnerLogoImg' src='src/assets/bag.png' alt='bag logo img' />
-              <h1>DON JAIME</h1>
-              <p>store</p>
-            </div>
-          </section>
-        }
-        >
-          <Outlet />
-        </Suspense>
-      </div>
+      <AuthProvider>
+        <Navbar />
+        <div className='App'>
+          <Suspense fallback={
+            <section className='spinCont'>
+              <p style={{ fontFamily: 'Fredoka', fontSize: '20px' }}>Loading...</p>
+              <div className='contlogo'>
+                <img className='spinnerLogoImg' src='src/assets/bag.png' alt='bag logo img' />
+                <h1>DON JAIME</h1>
+                <p>store</p>
+              </div>
+            </section>
+          }
+          >
+            <Outlet />
+          </Suspense>
+        </div>
+      </AuthProvider>
     </AppProvider>
   )
 }

@@ -4,7 +4,7 @@ import { useAuthContext } from '../context/AuthContext'
 
 export const Login = () => {
   // Funcion en contexto, para autenticar el login
-  const { loginAuth } = useAuthContext()
+  const { loginAuth, user } = useAuthContext()
 
   // estados donde guardare los valores que se pongan en los inputs
   const [email, setEmail] = useState('')
@@ -28,41 +28,52 @@ export const Login = () => {
   }
 
   return (
-    <section className='Cont-Login'>
-      <form className='form' onSubmit={handleSubmit}>
-        <div>
-          <h3>Login</h3>
-        </div>
-        {error !== '' ? <p style={{ backgroundColor: 'rgb(237, 88, 88)', borderRadius: '10px', width: '90%', textAlign: 'center', padding: '5px' }}>The E-mail or Password is no Bueno</p> : ''}
-        <div className='cont-inp'>
-          <input
-            required
-            name='email'
-            placeholder='E-mail'
-            type='email'
-            className='form-input'
-            onChange={event => setEmail(event.target.value)}
-            value={email}
-          />
-        </div>
-        <div className='cont-inp'>
-          <input
-            required
-            name='password'
-            placeholder='Password'
-            type='password'
-            className='form-input'
-            onChange={event => setPassword(event.target.value)}
-            value={password}
-          />
-        </div>
-        <div style={{ width: '70%', display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-          <button type='submit' className='Login-btn'>Login</button>
-          <button className='Login-btn'>
-            <Link to='/User/SignUp' style={{ textDecoration: 'none', color: 'black' }}>SignUp</Link>
-          </button>
-        </div>
-      </form>
-    </section>
+    <>
+      {user !== ''
+        ? (
+          <section className='userFinded'>
+            <h1>Welcome {user.data.first_name}</h1>
+            <button className='Login-btn'>
+              <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>Home</Link>
+            </button>
+          </section>)
+        : (
+          <section className='Cont-Login'>
+            <form className='form' onSubmit={handleSubmit}>
+              <div>
+                <h3>Login</h3>
+              </div>
+              {error !== '' ? <p style={{ backgroundColor: 'rgb(237, 88, 88)', borderRadius: '10px', width: '90%', textAlign: 'center', padding: '5px' }}>The E-mail or Password es no Bueno</p> : ''}
+              <div className='cont-inp'>
+                <input
+                  required
+                  name='email'
+                  placeholder='E-mail'
+                  type='email'
+                  className='form-input'
+                  onChange={event => setEmail(event.target.value)}
+                  value={email}
+                />
+              </div>
+              <div className='cont-inp'>
+                <input
+                  required
+                  name='password'
+                  placeholder='Password'
+                  type='password'
+                  className='form-input'
+                  onChange={event => setPassword(event.target.value)}
+                  value={password}
+                />
+              </div>
+              <div style={{ width: '70%', display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+                <button type='submit' className='Login-btn'>Login</button>
+                <button className='Login-btn'>
+                  <Link to='/User/SignUp' style={{ textDecoration: 'none', color: 'black' }}>SignUp</Link>
+                </button>
+              </div>
+            </form>
+          </section>)}
+    </>
   )
 }

@@ -2,17 +2,13 @@ import axios from 'axios'
 import { createContext, useContext, useState, useEffect } from 'react'
 
 // utils jwt
-import { isValidToken } from '../utils/jwt'
+import { isValidToken, setSession } from '../utils/jwt'
 
 // El que tiene los valos guardados
 const AuthContext = createContext(null)
 
 // El que abraza a los valores y necesita ser invocado para llamar a los valores para que se puedan comunicar entre si
 const AuthProvider = ({ children }) => {
-  // estado para verificar que tengo una sesion iniciada
-  const [authed, setAuthed] = useState(false)
-  // checa cada que se actualiza la pagina si se quedo un token en local storage
-  const [init, setInit] = useState(false)
   // estado para guardar el token y el id del usuario cuando ya haga login
   const [token, setToken] = useState('')
   const [id, setId] = useState('none')
@@ -27,19 +23,42 @@ const AuthProvider = ({ children }) => {
     // respuesta de axios
     setId(isValidToken(response.data.token))
     setToken(response.data.token)
-    setAuthed(true)
-    setUser(await axios.get(`https://ecomerce-master.herokuapp.com/api/v1/user/${id}`, {
-      headers: {
-        Authorization: `JWT ${token}`
-      }
-    }))
+    setSession(response.data.token)
+    // estado para verificar si tiene una sesión iniciada
   }
 
+  // valida si ya tengo un token en local storage,
   useEffect(() => {
-    if (user !== '') {
-      console.log(user)
+    try {
+      if (window.localStorage.getItem('token') !== null && isValidToken(window.localStorage.getItem('token'))) {
+        setId(isValidToken(window.localStorage.getItem('token')))
+        setToken(window.localStorage.getItem('token'))
+        // estado que verifica si tiene una sesion iniciada sindo que se actualizo el navegador y se guardo el token en local storage
+      }
+    } catch (error) {
+      console.log(error)
     }
-  }, [user])
+  }, [])
+
+  // para obtener la info del usuario logueado
+  useEffect(() => {
+    // para checar si user ya tiene la info de el usuario
+    if (user !== '') {
+      return console.log(user)
+    }
+    // para hacer la petición de la info del usuario logueado
+    if (token !== '' && id !== '') {
+      // console.log(token)
+      const funUser = async () => {
+        setUser(await axios.get(`https://ecomerce-master.herokuapp.com/api/v1/user/${id}`, {
+          headers: {
+            Authorization: `JWT ${token}`
+          }
+        }))
+      }
+      funUser()
+    }
+  }, [token, user])
 
   const initialValues = {
     loginAuth,

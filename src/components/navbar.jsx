@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom'
 // styles
 import '../assets/bag.png'
 import '../styles/navbar.css'
+import { useAuthContext } from '../context/AuthContext'
 
 const Navbar = ({ about = '' }) => {
   const { hide, setHide, colo, setColo } = useAppContext()
+  const { user } = useAuthContext()
 
   return (
     <header className='nav'>
@@ -27,7 +29,7 @@ const Navbar = ({ about = '' }) => {
         </div>
       </Link>
       <div className='perfil'>
-        <Link className={about === 'user' ? 'btnI-selected' : 'user'} to='/User/Login'><img src='../../src/assets/User.png' alt='Imagen carrito de compras' /></Link>
+        <Link className={about === 'user' ? 'btnI-selected' : 'user'} to='/User/Login'>{user !== '' ? <p>{user.data.first_name}</p> : <p>Who are you?</p>}<img src='../../src/assets/User.png' alt='Imagen carrito de compras' /></Link>
         <Link className={colo === 'cart' ? 'btnI-selected' : 'carrito'} onClick={() => setColo('cart')} to='Cart'><img src='../../src/assets/CarritoBlanc.png' alt='Imagen carrito de compras' /></Link>
         <Link className={colo === 'wish' ? 'btnI-selected' : 'favoritos'} onClick={() => setColo('wish')} to='Wishlist'><img src='../../src/assets/CoraW.png' alt='Icono de favoritos' /></Link>
       </div>
