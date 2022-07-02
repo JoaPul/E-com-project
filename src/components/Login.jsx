@@ -4,7 +4,7 @@ import { useAuthContext } from '../context/AuthContext'
 
 export const Login = () => {
   // Funcion en contexto, para autenticar el login
-  const { loginAuth, user } = useAuthContext()
+  const { loginAuth, user, nn, setNN } = useAuthContext()
 
   // estados donde guardare los valores que se pongan en los inputs
   const [email, setEmail] = useState('')
@@ -30,6 +30,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (user !== '') {
+      setNN('')
       navigate('/items')
     }
   }, [user])
@@ -40,7 +41,17 @@ export const Login = () => {
         <div>
           <h3>Login</h3>
         </div>
-        {error !== '' ? <p style={{ backgroundColor: 'rgb(237, 88, 88)', borderRadius: '10px', width: '90%', textAlign: 'center', padding: '5px' }}>The E-mail or Password es no Bueno</p> : ''}
+        {error !== ''
+          ? (
+            <p style={{ backgroundColor: 'rgb(237, 88, 88)', borderRadius: '10px', width: '90%', textAlign: 'center', padding: '5px' }}>
+              The E-mail or Password es no Bueno
+            </p>)
+          : nn !== ''
+            ? (
+              <p style={{ backgroundColor: 'rgb(56, 161, 56)', borderRadius: '10px', width: '90%', textAlign: 'center', padding: '5px' }}>
+                LogIn {nn}
+              </p>)
+            : ''}
         <div className='cont-inp'>
           <input
             required

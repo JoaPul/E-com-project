@@ -14,6 +14,9 @@ const AuthProvider = ({ children }) => {
   const [id, setId] = useState('none')
   // estado para guardar la información del usuario
   const [user, setUser] = useState('')
+  // saber si ya hizo singUp
+  const [si, setSi] = useState(false)
+  const [nn, setNN] = useState('')
 
   const loginAuth = async (email, password) => {
     const response = await axios.post('https://ecomerce-master.herokuapp.com/api/v1/login', {
@@ -27,7 +30,20 @@ const AuthProvider = ({ children }) => {
     // estado para verificar si tiene una sesión iniciada
   }
 
-  // valida si ya tengo un token en local storage,
+  // SingUp
+  const SignUpAuth = async (data) => {
+    try {
+      const response = await axios.post('https://ecomerce-master.herokuapp.com/api/v1/signup', data)
+      // respuesta de axios
+      console.log(response.data.first_name)
+      setNN(response.data.first_name)
+      setSi(true)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  // valida si ya tengo un token en local storage
   useEffect(() => {
     try {
       if (window.localStorage.getItem('token') !== null && isValidToken(window.localStorage.getItem('token'))) {
@@ -62,7 +78,11 @@ const AuthProvider = ({ children }) => {
 
   const initialValues = {
     loginAuth,
-    user
+    SignUpAuth,
+    setNN,
+    user,
+    si,
+    nn
   }
 
   return (
