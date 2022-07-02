@@ -14,6 +14,7 @@ import { Profile } from './components/Profile'
 
 // funcioines de librerias
 import { Navigate, useRoutes } from 'react-router-dom'
+// import { useAuthContext } from './context/AuthContext'
 
 // Items recibe un prop llamado 'esc'
 // que es un estado que controla si aparece el buscador o no,

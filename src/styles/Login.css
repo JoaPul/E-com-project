@@ -86,3 +86,30 @@
   color: white;
   font-size: 30px;
 }
+
+/*Profile*/
+.Cont-Perfil {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.userInfo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.UName {
+  color: black;
+}
+
+.data {
+  color: white;
+}

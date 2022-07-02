@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
 
 export const Login = () => {
@@ -13,6 +13,9 @@ export const Login = () => {
   // estado de error si no se autentifican las credenciales
   const [error, setError] = useState('')
 
+  // navegar cuando ya se tenga usuario a items
+  const navigate = useNavigate()
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     // checar si las credenciales estan bien
@@ -21,59 +24,52 @@ export const Login = () => {
     } catch (error) {
       setError(error)
     }
-    // checa que si este mandado la info correcta
-    // console.log(user)
     // reinicia los vlaores del estado de password
     setPassword('')
   }
 
+  useEffect(() => {
+    if (user !== '') {
+      navigate('/items')
+    }
+  }, [user])
+
   return (
-    <>
-      {user !== ''
-        ? (
-          <section className='userFinded'>
-            <h1>Welcome {user.data.first_name}</h1>
-            <button className='Login-btn'>
-              <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>Home</Link>
-            </button>
-          </section>)
-        : (
-          <section className='Cont-Login'>
-            <form className='form' onSubmit={handleSubmit}>
-              <div>
-                <h3>Login</h3>
-              </div>
-              {error !== '' ? <p style={{ backgroundColor: 'rgb(237, 88, 88)', borderRadius: '10px', width: '90%', textAlign: 'center', padding: '5px' }}>The E-mail or Password es no Bueno</p> : ''}
-              <div className='cont-inp'>
-                <input
-                  required
-                  name='email'
-                  placeholder='E-mail'
-                  type='email'
-                  className='form-input'
-                  onChange={event => setEmail(event.target.value)}
-                  value={email}
-                />
-              </div>
-              <div className='cont-inp'>
-                <input
-                  required
-                  name='password'
-                  placeholder='Password'
-                  type='password'
-                  className='form-input'
-                  onChange={event => setPassword(event.target.value)}
-                  value={password}
-                />
-              </div>
-              <div style={{ width: '70%', display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-                <button type='submit' className='Login-btn'>Login</button>
-                <button className='Login-btn'>
-                  <Link to='/User/SignUp' style={{ textDecoration: 'none', color: 'black' }}>SignUp</Link>
-                </button>
-              </div>
-            </form>
-          </section>)}
-    </>
+    <section className='Cont-Login'>
+      <form className='form' onSubmit={handleSubmit}>
+        <div>
+          <h3>Login</h3>
+        </div>
+        {error !== '' ? <p style={{ backgroundColor: 'rgb(237, 88, 88)', borderRadius: '10px', width: '90%', textAlign: 'center', padding: '5px' }}>The E-mail or Password es no Bueno</p> : ''}
+        <div className='cont-inp'>
+          <input
+            required
+            name='email'
+            placeholder='E-mail'
+            type='email'
+            className='form-input'
+            onChange={event => setEmail(event.target.value)}
+            value={email}
+          />
+        </div>
+        <div className='cont-inp'>
+          <input
+            required
+            name='password'
+            placeholder='Password'
+            type='password'
+            className='form-input'
+            onChange={event => setPassword(event.target.value)}
+            value={password}
+          />
+        </div>
+        <div style={{ width: '70%', display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+          <button type='submit' className='Login-btn'>Login</button>
+          <button className='Login-btn'>
+            <Link to='/User/SignUp' style={{ textDecoration: 'none', color: 'black' }}>SignUp</Link>
+          </button>
+        </div>
+      </form>
+    </section>
   )
 }
