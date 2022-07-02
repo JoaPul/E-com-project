@@ -32,7 +32,7 @@ const Items = () => {
       <section className='spinCont'>
         <p style={{ fontFamily: 'Fredoka', fontSize: '20px' }}>Loading...</p>
         <div className='contlogo'>
-          <img className='spinnerLogoImg' src='/src/assets/bag.png' alt='bag logo img' />
+          <img className='spinnerLogoImg' src='https://i.postimg.cc/FdPwPLCr/bag.png' alt='bag logo img' />
           <h1>DON JAIME</h1>
           <p>store</p>
         </div>
