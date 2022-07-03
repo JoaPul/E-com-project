@@ -14,6 +14,8 @@ const AppProvider = ({ children }) => {
   const [fav, setFav] = useState([])
   // Estado para cambiar de color, botones de navBar
   const [colo, setColo] = useState('menu')
+  // estado para saber si esconder o dejar menu hamburgueza
+  const [open, setOpen] = useState(false)
 
   const addToCart = (index) => {
     setCart([...cart, index])
@@ -38,10 +40,12 @@ const AppProvider = ({ children }) => {
     setItems,
     setHide,
     setColo,
+    setOpen,
     addToCart,
     addToWish,
     filterCart,
     filterWish,
+    open,
     colo,
     fav,
     cart,
