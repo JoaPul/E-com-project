@@ -1,3 +1,11 @@
+/* titulo de las paginas Cart y Wishlist*/
+.Titulo,
+.blank {
+  font-family: 'Fredoka';
+  text-align: center;
+}
+
+/* Tabla de articulos */
 .ElemLista {
   width: 80%;
 }
@@ -24,6 +32,10 @@
   align-items: center;
 }
 
+.artBtn {
+  gap: 10px;
+}
+
 .artContImg img {
   width: 100px;
   height: 100px;
@@ -32,17 +44,97 @@
 
 .infoProd {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: space-between;
   font-family: 'Fredoka';
   text-align: center;
   font-size: 22px;
+  /* gap: 10px */
 }
 
-.borrarDeLista {
+.contador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.borrarDeLista,
+.contador button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   background-color: #595959;
   height: 40px;
   width: 40px;
   color: white;
   font-size: 25px;
+  transition: background-color .25s ease-out, box-shadow .25s ease-out, transform .25s ease-out;
+}
+
+.borrarDeLista img {
+  height: 20px;
+  width: 20px;
+}
+
+.borrarDeLista:hover,
+.contador button:hover {
+  box-shadow: 3px 3px #8C8C8C;
+  background-color: #404040;
+  color: white;
+  transform: scale(1.1);
+}
+
+.borrarDeLista:active,
+.contador button:active {
+  background-color: #fff67a;
+}
+
+/*Media queries*/
+@media screen and (max-width: 720px) {
+  .infoProd {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .artBtn {
+    gap: 10px;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 466px) {
+  .artContImg img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .artBtn {
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .infoProd {
+    font-size: 17px;
+  }
+
+  .borrarDeLista,
+  .contador button {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+  }
+
+  .borrarDeLista img {
+    height: 16px;
+    width: 16px;
+  }
 }

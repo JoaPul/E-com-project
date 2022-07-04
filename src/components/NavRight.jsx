@@ -94,9 +94,22 @@ export const NavRight = ({ about }) => {
           <div className='barras'>.</div>
         </section>
         <ul className='perfil'>
-          <li><Link className={about === 'user' ? 'btnI-selected' : 'user'} to={user !== '' ? `/User/Profile/${user.data.first_name}` : '/User/Login'}>{user !== '' ? <p>{user.data.first_name}</p> : <p>Who are you?</p>}<img src='https://i.postimg.cc/3d0zBWXh/User.png' alt='Imagen carrito de compras' /></Link></li>
-          <li><Link className={colo === 'cart' ? 'btnI-selected' : 'carrito'} onClick={() => setColo('cart')} to='Cart'><img src='https://i.postimg.cc/qhB9XLLD/Carrito-Blanc.png' alt='Imagen carrito de compras' /></Link></li>
-          <li><Link className={colo === 'wish' ? 'btnI-selected' : 'favoritos'} onClick={() => setColo('wish')} to='Wishlist'><img src='https://i.postimg.cc/YLhZTCT1/CoraW.png' alt='Icono de favoritos' /></Link></li>
+          <li>
+            <Link className={about === 'user' ? 'btnI-selected' : 'user'} to={user !== '' ? `/User/Profile/${user.data.first_name}` : '/User/Login'}>
+              {user !== '' ? <p>{user.data.first_name}</p> : <p>Who are you?</p>}
+              <img src='https://i.postimg.cc/3d0zBWXh/User.png' alt='Imagen carrito de compras' />
+            </Link>
+          </li>
+          <li>
+            <Link className={colo === 'cart' ? 'btnI-selected' : 'carrito'} onClick={() => setColo('cart')} to={user !== '' ? '/items/Cart' : '/User/Login'}>
+              <img src='https://i.postimg.cc/qhB9XLLD/Carrito-Blanc.png' alt='Imagen carrito de compras' />
+            </Link>
+          </li>
+          <li>
+            <Link className={colo === 'wish' ? 'btnI-selected' : 'favoritos'} onClick={() => setColo('wish')} to={user !== '' ? '/items/Wishlist' : '/User/Login'}>
+              <img src='https://i.postimg.cc/YLhZTCT1/CoraW.png' alt='Icono de favoritos' />
+            </Link>
+          </li>
         </ul>
       </section>
     </StyleBurger>

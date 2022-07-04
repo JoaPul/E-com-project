@@ -13,7 +13,7 @@ const Items = () => {
   const searchRef = useRef()
   const [arr, setArr] = useState([])
   const [vali, setVali] = useState(false)
-  const { setItems, hide } = useAppContext()
+  const { setItems, hide, addToCart, addToWish } = useAppContext()
   const { data: itemss, error } = useFetcher('https://ecomerce-master.herokuapp.com/api/v1/item')
   // Mensaje de error si no encontro ningun match con la busqueda
   const [sms, setSms] = useState('')
@@ -91,16 +91,26 @@ const Items = () => {
         {!vali
           ? Espera()
           : arr.map((index, key) => (
-            <Link onClick={() => setItems([index, `https://picsum.photos/500/500?random=${arr.indexOf(index)}`])} to={`item/${index.product_name}`} key={key} className='conte-Items'>
-              <article className='card'>
-                <img loading='lazy' src={`https://picsum.photos/500/500?random=${arr.indexOf(index)}`} alt='imagen de articulo' />
-                <div className='infoPro'>
-                  <p>{index.product_name}</p>
-                  {/* <br /> */}
-                  <p><span style={{ textDecoration: 'underline', textDecorationThickness: '2px', fontSize: '20px', fontWeight: '1000' }}>${index.price}</span></p>
-                </div>
-              </article>
-            </Link>
+            <div key={key} className='conte-Items'>
+              <Link onClick={() => setItems([index, `https://picsum.photos/500/500?random=${arr.indexOf(index)}`])} to={`item/${index.product_name}`} className='Link'>
+                <article className='card'>
+                  <img loading='lazy' src={`https://picsum.photos/500/500?random=${arr.indexOf(index)}`} alt='imagen de articulo' />
+                  <div className='infoPro'>
+                    <p>{index.product_name}</p>
+                    {/* <br /> */}
+                    <p style={{ fontSize: '20px', fontWeight: '1000' }}>$<span style={{ textDecoration: 'underline', textDecorationThickness: '2px', fontSize: '20px', fontWeight: '1000' }}>{index.price}</span></p>
+                  </div>
+                </article>
+              </Link>
+              <div className='actionss'>
+                <button onClick={() => addToCart([index, `https://picsum.photos/500/500?random=${arr.indexOf(index)}`])}>
+                  <img src='https://i.postimg.cc/qhB9XLLD/Carrito-Blanc.png' alt='Imagen carrito de compras' />
+                </button>
+                <button onClick={() => addToWish([index, `https://picsum.photos/500/500?random=${arr.indexOf(index)}`])}>
+                  <img src='https://i.postimg.cc/YLhZTCT1/CoraW.png' alt='Icono de vfavoritos' />
+                </button>
+              </div>
+            </div>
           ))}
       </section>
     </div>

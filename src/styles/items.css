@@ -11,6 +11,11 @@
   /* height: 100vh; */
 }
 
+.Link {
+  text-decoration: none;
+  color: #262626;
+}
+
 /*Buscador*/
 .searchForm {
   display: flex;
@@ -82,7 +87,6 @@ article img {
   height: 150px;
   width: 150px;
   object-fit: cover;
-  /* object-fit: scale-down; */
   border-radius: 10px;
 }
 
@@ -95,6 +99,7 @@ article img {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   color: #262626;
   font-family: "Fredoka";
   text-align: center;
@@ -118,6 +123,42 @@ p {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+/*Botones para agregar a wishlist o a cart*/
+.actionss {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.actionss button img {
+  height: 15px;
+  width: 15px;
+  object-fit: cover;
+}
+
+.actionss button {
+  padding: 10px;
+  background-color: #8C8C8C;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  border: 3px solid #454545;
+  transition: background-color .25s ease-out, box-shadow .25s ease-out, transform .25s ease-out;
+}
+
+.actionss button:hover {
+  background-color: #404040;
+  box-shadow: 3px 3px #8C8C8C;
+  color: white;
+  transform: scale(1.1);
+}
+
+.actionss button:active {
+  background-color: #fff67a;
 }
 
 
@@ -167,6 +208,8 @@ p {
   font-size: 27px;
   padding-top: 10px;
 }
+
+
 
 @keyframes textAnim {
   0% {

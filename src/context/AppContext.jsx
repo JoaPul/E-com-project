@@ -16,6 +16,8 @@ const AppProvider = ({ children }) => {
   const [colo, setColo] = useState('menu')
   // estado para saber si esconder o dejar menu hamburgueza
   const [open, setOpen] = useState(false)
+  // contadores de articulos
+  // const [cont, setCont] = useState(false)
 
   const addToCart = (index) => {
     setCart([...cart, index])
