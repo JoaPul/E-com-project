@@ -16,8 +16,8 @@ const AppProvider = ({ children }) => {
   const [colo, setColo] = useState('menu')
   // estado para saber si esconder o dejar menu hamburgueza
   const [open, setOpen] = useState(false)
-  // contadores de articulos
-  // const [cont, setCont] = useState(false)
+  // Artifulos no repetidos
+  const [favNR, setFavNR] = useState([])
 
   const addToCart = (index) => {
     setCart([...cart, index])
@@ -25,6 +25,12 @@ const AppProvider = ({ children }) => {
 
   const addToWish = (index) => {
     setFav([...fav, index])
+    if (fav.length !== 0) {
+      fav.filter((el) => {
+        console.log('son iguales?', el[1], index[1])
+        return el[1] !== index[1] && setFavNR([...favNR, index])
+      })
+    }
   }
 
   const filterCart = (index) => {
@@ -47,6 +53,7 @@ const AppProvider = ({ children }) => {
     addToWish,
     filterCart,
     filterWish,
+    favNR,
     open,
     colo,
     fav,

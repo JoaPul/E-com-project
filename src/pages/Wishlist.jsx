@@ -1,20 +1,18 @@
 // import { List } from '../components/list'
-// import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import useAppContext from '../hooks/useAppContext'
 
 export const Wishlist = () => {
-  const { fav, filterWish, addToCart } = useAppContext()
-  const [favNR, setFavNR] = useState(fav)
+  const { fav, filterWish, addToCart, favNR } = useAppContext()
 
-  //hacer que favNR no tenga elementos repetidos, y ver como hacer la funcion de quitar y aumentar elementos de la lista de favoritos
-  fav.filter(el => {
-    return
-  })
+  useEffect(() => {
+    console.log('fav', fav, 'favNR', favNR)
+  }, [favNR, fav])
 
   // cuenta cuantos articulos iguales hay en fav
-  const cuenta = (item) => {
+  const contar = (item) => {
     return fav.filter(elem => {
-      return elem === item && item
+      return elem[0] === item[0] && item
     }).length
   }
 
@@ -32,9 +30,9 @@ export const Wishlist = () => {
                 <p>{item[0].product_name}</p>
                 <p>${item[0].price}</p>
                 <div className='contador'>
-                  <button onClick={console.log('menos')}><p>{'<'}</p></button>
+                  <button style={contar(item) === 1 ? { zIndex: '-1' } : { zIndex: '4' }} onClick={() => console.log('menos')}><p>{'<'}</p></button>
                   {/* <p>{cont}</p> */}
-                  <p>{cuenta(item)}</p>
+                  <p>{contar(item)}</p>
                   <button><p>{'>'}</p></button>
                 </div>
               </div>

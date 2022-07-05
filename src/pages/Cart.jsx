@@ -9,7 +9,9 @@ export const Cart = () => {
   const [total, setTotal] = useState(0)
 
   useEffect(() => {
-    cart !== 0 && setTotal(cart.map(item => item[0].price).reduce((toal, currentValue) => toal + currentValue))
+    if (cart.length !== 0) {
+      cart !== 0 && setTotal(cart.map(item => item[0].price).reduce((toal, currentValue) => toal + currentValue))
+    }
   }, [])
 
   return (
