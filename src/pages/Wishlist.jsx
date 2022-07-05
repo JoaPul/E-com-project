@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import useAppContext from '../hooks/useAppContext'
 
 export const Wishlist = () => {
-  const { fav, filterWish, addToCart, favNR } = useAppContext()
+  const { fav, filterWish, addToCart, favNR, addToWish, QuitaUnoW } = useAppContext()
 
   useEffect(() => {
     console.log('fav', fav, 'favNR', favNR)
@@ -30,10 +30,10 @@ export const Wishlist = () => {
                 <p>{item[0].product_name}</p>
                 <p>${item[0].price}</p>
                 <div className='contador'>
-                  <button style={contar(item) === 1 ? { zIndex: '-1' } : { zIndex: '4' }} onClick={() => console.log('menos')}><p>{'<'}</p></button>
+                  <button style={contar(item) === 1 ? { zIndex: '-1' } : { zIndex: '4' }} onClick={() => QuitaUnoW(item)}><p>{'<'}</p></button>
                   {/* <p>{cont}</p> */}
                   <p>{contar(item)}</p>
-                  <button><p>{'>'}</p></button>
+                  <button onClick={() => addToWish(item)}><p>{'>'}</p></button>
                 </div>
               </div>
               <div className='artBtn'>

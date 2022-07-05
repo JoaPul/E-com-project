@@ -5,20 +5,27 @@ import { useEffect, useState } from 'react'
 import '../styles/list.css'
 
 export const Cart = () => {
-  const { cart, filterCart, addToWish } = useAppContext()
+  const { cart, filterCart, addToWish, cartNR, addToCart, QuitaUnoC } = useAppContext()
   const [total, setTotal] = useState(0)
 
   useEffect(() => {
     if (cart.length !== 0) {
       cart !== 0 && setTotal(cart.map(item => item[0].price).reduce((toal, currentValue) => toal + currentValue))
     }
-  }, [])
+  }, [cart])
+
+  // cuenta cuantos articulos iguales hay en cart
+  const contar = (item) => {
+    return cart.filter(elem => {
+      return elem[0] === item[0] && item
+    }).length
+  }
 
   return (
     <div className='ElemLista'>
       <h1 className='Titulo'>Cart</h1>
       {cart.length !== 0
-        ? cart.map((item, key) => {
+        ? cartNR.map((item, key) => {
           return (
             <div className='articulo' key={key}>
               <div className='artContImg'>
@@ -27,6 +34,12 @@ export const Cart = () => {
               <div className='infoProd'>
                 <p>{item[0].product_name}</p>
                 <p>${item[0].price}</p>
+                <div className='contador'>
+                  <button style={contar(item) === 1 ? { zIndex: '-1' } : { zIndex: '4' }} onClick={() => QuitaUnoC(item)}><p>{'<'}</p></button>
+                  {/* <p>{cont}</p> */}
+                  <p>{contar(item)}</p>
+                  <button onClick={() => addToCart(item)}><p>{'>'}</p></button>
+                </div>
               </div>
               <div className='artBtn'>
                 <button className='borrarDeLista' onClick={() => filterCart(item)}>&times;</button>

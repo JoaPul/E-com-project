@@ -18,18 +18,51 @@ const AppProvider = ({ children }) => {
   const [open, setOpen] = useState(false)
   // Artifulos no repetidos
   const [favNR, setFavNR] = useState([])
+  const [cartNR, setCartNR] = useState([])
+
+  const QuitaUnoW = (index) => {
+    let i = 0
+    setFav(fav.filter((elem) => {
+      if (elem[1] === index[1] && i === 0) {
+        i += 1
+        return null
+      } else {
+        return elem
+      }
+    }))
+  }
+
+  const QuitaUnoC = (index) => {
+    let i = 0
+    setCart(cart.filter((elem) => {
+      if (elem[1] === index[1] && i === 0) {
+        i += 1
+        return null
+      } else {
+        return elem
+      }
+    }))
+  }
 
   const addToCart = (index) => {
     setCart([...cart, index])
+    if (cart.length !== 0) {
+      if (cart.filter((el) => { return el[1] !== index[1] && true }).length === cart.length) {
+        setCartNR([...cartNR, index])
+      }
+    } else {
+      setCartNR([...cartNR, index])
+    }
   }
 
   const addToWish = (index) => {
     setFav([...fav, index])
     if (fav.length !== 0) {
-      fav.filter((el) => {
-        console.log('son iguales?', el[1], index[1])
-        return el[1] !== index[1] && setFavNR([...favNR, index])
-      })
+      if (fav.filter((el) => { return el[1] !== index[1] && true }).length === fav.length) {
+        setFavNR([...favNR, index])
+      }
+    } else {
+      setFavNR([...favNR, index])
     }
   }
 
@@ -37,9 +70,16 @@ const AppProvider = ({ children }) => {
     setCart(() => cart.filter((elem) => {
       return elem !== index
     }))
+    setCartNR(() => cartNR.filter((elem) => {
+      return elem !== index
+    }))
   }
+
   const filterWish = (index) => {
     setFav(() => fav.filter((elem) => {
+      return elem !== index
+    }))
+    setFavNR(() => favNR.filter((elem) => {
       return elem !== index
     }))
   }
@@ -53,7 +93,10 @@ const AppProvider = ({ children }) => {
     addToWish,
     filterCart,
     filterWish,
+    QuitaUnoW,
+    QuitaUnoC,
     favNR,
+    cartNR,
     open,
     colo,
     fav,
