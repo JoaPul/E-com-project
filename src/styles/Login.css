@@ -21,8 +21,12 @@
   /* background-color: rgb(237, 88, 88); */
 }
 
+.form {
+  height: 250px;
+}
+
 .form-SignUp {
-  height: 50vh;
+  height: 380px;
 }
 
 .form h3,

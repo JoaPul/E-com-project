@@ -83,7 +83,7 @@ const StyleBurger = styled.div`
 export const NavRight = ({ about }) => {
   // const [open, setOpen] = useState(false)
   const { user } = useAuthContext()
-  const { colo, setColo, open, setOpen } = useAppContext()
+  const { colo, setColo, open, setOpen, fav, cart } = useAppContext()
 
   return (
     <StyleBurger open={open}>
@@ -101,13 +101,19 @@ export const NavRight = ({ about }) => {
             </Link>
           </li>
           <li>
-            <Link className={colo === 'cart' ? 'btnI-selected' : 'carrito'} onClick={() => setColo('cart')} to={user !== '' ? '/items/Cart' : '/User/Login'}>
-              <img src='https://i.postimg.cc/qhB9XLLD/Carrito-Blanc.png' alt='Imagen carrito de compras' />
+            <Link className={colo === 'cart' ? 'btnI-selectedD' : 'carrito'} onClick={() => setColo('cart')} to={user !== '' ? '/items/Cart' : '/User/Login'}>
+              <div className='insai'>
+                <div className='numart' style={cart.lenght !== 0 ? { display: 'inline-block' } : { display: 'none' }}>{cart.lenght !== 0 ? cart.lenght : ''}</div>
+                <img src='https://i.postimg.cc/qhB9XLLD/Carrito-Blanc.png' alt='Imagen carrito de compras' />
+              </div>
             </Link>
           </li>
           <li>
-            <Link className={colo === 'wish' ? 'btnI-selected' : 'favoritos'} onClick={() => setColo('wish')} to={user !== '' ? '/items/Wishlist' : '/User/Login'}>
-              <img src='https://i.postimg.cc/YLhZTCT1/CoraW.png' alt='Icono de favoritos' />
+            <Link className={colo === 'wish' ? 'btnI-selectedD' : 'favoritos'} onClick={() => setColo('wish')} to={user !== '' ? '/items/Wishlist' : '/User/Login'}>
+              <div className='insai'>
+                <div className='numart' style={fav.lenght !== 0 ? { display: 'inline-block' } : { display: 'none' }}>{fav.lenght !== 0 ? fav.lenght : ''}</div>
+                <img src='https://i.postimg.cc/YLhZTCT1/CoraW.png' alt='Icono de favoritos' />
+              </div>
             </Link>
           </li>
         </ul>

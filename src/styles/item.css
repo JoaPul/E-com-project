@@ -97,7 +97,7 @@
 }
 
 .actions button:active {
-  background-color: #5e5e5e;
+  background-color: #fff67a;
 }
 
 @media screen and (max-width: 950px) {

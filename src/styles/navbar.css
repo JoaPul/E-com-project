@@ -81,6 +81,17 @@
   border-bottom: 3px solid white;
 }
 
+.numart {
+  height: 15px;
+  width: 15px;
+  background-color: #fff67a;
+  position: relative;
+  left: 34px;
+  top: -5px;
+  font-size: 8px;
+  border-radius: 50%;
+  font-family: 'Fredoka';
+}
 
 /*Imagen de bolsita de compras en navbar*/
 .logoImg {
@@ -93,10 +104,6 @@
 .logo:hover {
   transform: scale(1);
   color: white;
-  /* animation-name: logoAnim;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-direction: alternate; */
 }
 
 /*botones se perfil de usuario*/
@@ -122,6 +129,7 @@
 
 .user:hover,
 .btnI-selected:hover,
+.btnI-selectedD:hover,
 .carrito img:hover,
 .favoritos img:hover {
   border-bottom: 3px solid white;
@@ -140,7 +148,8 @@
 }
 
 .user img,
-.btnI-selected img {
+.btnI-selected img,
+.btnI-selectedD img {
   height: 25px;
   width: 27px;
   padding-top: 10px;
@@ -158,16 +167,28 @@
   transition: border-bottom .25s ease-out, contrast .25s ease-out;
 }
 
+.btnI-selectedD {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+  /* gap: 5px; */
+  align-items: center;
+  text-decoration: none;
+  transition: border-bottom .25s ease-out, contrast .25s ease-out;
+}
+
 .user {
   filter: contrast(50%);
   transition: border-bottom .25s ease-out, contrast .25s ease-out;
 }
 
+.btnI-selectedD,
 .btnI-selected {
   border-bottom: 3px solid white;
   margin-bottom: 5px;
 }
 
+.btnI-selectedD p,
 .btnI-selected p,
 .user p {
   font-family: 'Fredoka';
@@ -176,6 +197,7 @@
   color: white;
 }
 
+.btnI-selectedD img,
 .btnI-selected img {
   filter: contrast(100%);
 }
