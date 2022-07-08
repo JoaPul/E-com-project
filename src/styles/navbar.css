@@ -81,16 +81,40 @@
   border-bottom: 3px solid white;
 }
 
+.insai {
+  width: 27px;
+}
+
 .numart {
   height: 15px;
   width: 15px;
   background-color: #fff67a;
   position: relative;
-  left: 34px;
-  top: -5px;
+  left: 22px;
+  top: 13px;
   font-size: 8px;
   border-radius: 50%;
   font-family: 'Fredoka';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-size: 13px;
+}
+
+.pnum {
+  padding: 0px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
 }
 
 /*Imagen de bolsita de compras en navbar*/
@@ -170,8 +194,6 @@
 .btnI-selectedD {
   display: flex;
   justify-content: center;
-  /* flex-direction: column; */
-  /* gap: 5px; */
   align-items: center;
   text-decoration: none;
   transition: border-bottom .25s ease-out, contrast .25s ease-out;
@@ -195,6 +217,10 @@
   padding: 0px;
   text-decoration: none;
   color: white;
+}
+
+.btnI-selectedD .insai .numart .pnum {
+  color: black;
 }
 
 .btnI-selectedD img,

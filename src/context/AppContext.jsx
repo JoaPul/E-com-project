@@ -68,19 +68,19 @@ const AppProvider = ({ children }) => {
 
   const filterCart = (index) => {
     setCart(() => cart.filter((elem) => {
-      return elem !== index
+      return elem[1] !== index[1] && elem
     }))
     setCartNR(() => cartNR.filter((elem) => {
-      return elem !== index
+      return elem[1] !== index[1] && elem
     }))
   }
 
   const filterWish = (index) => {
     setFav(() => fav.filter((elem) => {
-      return elem !== index
+      return elem[1] !== index[1] && elem
     }))
     setFavNR(() => favNR.filter((elem) => {
-      return elem !== index
+      return elem[1] !== index[1] && elem
     }))
   }
 
