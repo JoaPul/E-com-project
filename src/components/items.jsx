@@ -11,12 +11,18 @@ import { Link } from 'react-router-dom'
 
 const Items = () => {
   const searchRef = useRef()
+  // arreglo manipulable donde estan los productos
   const [arr, setArr] = useState([])
+  // valor para decir si ya se cargaron los productos o no
   const [vali, setVali] = useState(false)
+  // estados globales
   const { setItems, hide, addToCart, addToWish } = useAppContext()
+  // respuesta del fetch
   const { data: itemss, error } = useFetcher('https://ecomerce-master.herokuapp.com/api/v1/item')
   // Mensaje de error si no encontro ningun match con la busqueda
   const [sms, setSms] = useState('')
+  // estado para separar paginas y articulos
+  const [pag, setPag] = useState(0)
 
   if (error) {
     return (<p>{error}</p>)
@@ -25,7 +31,7 @@ const Items = () => {
   // funcion para esperar a que se termine de cargar la infomracion de axios, mientras, llama a un spinner
   const Espera = () => {
     setTimeout(() => {
-      setArr(itemss)
+      pages()
       setVali(true)
     }, 2000)
     return (
@@ -57,33 +63,44 @@ const Items = () => {
     return (
       <>
         <form onSubmit={searchItems} className='searchForm'>
-          <input type='search' ref={searchRef} placeholder='Busca un producto...' onChange={(event) => event.target.value === '' && setArr(itemss)} />
+          <input type='search' ref={searchRef} placeholder='Busca un producto...' onChange={(event) => event.target.value === '' && pages()} />
         </form>
         {sms}
       </>
     )
   }
 
-  useEffect(() => {
-    if (!hide) {
-      setSms('')
+  const pages = () => {
+    const aux = []
+    for (let i = pag; i < pag + 30; i++) {
+      if (itemss[i + pag]) {
+        aux.push(itemss[i + pag])
+      }
     }
-  }, [hide])
+    setArr(aux)
+  }
+
+  useEffect(() => {
+    setArr()
+    pages()
+  }, [pag])
 
   useEffect(() => {
     if (!hide) {
       setSms('')
     } else {
       if (arr.length !== 0) {
-        setSms(<p className='Finded'>We found {arr.length} Items</p>)
+        if (arr.length !== 30) {
+          setSms(<p className='Finded'>We have {arr.length} Items</p>)
+        } else {
+          setSms(null)
+        }
       } else {
         setSms(<p className='NotFinded'>No item with this specifications were found</p>)
       }
     }
-  }, [arr])
+  }, [arr, hide])
 
-  // `https://picsum.photos/300/200?random=${parseInt(Math.random() * 1000)}`
-  // imgFalsa(index.image) list={index}
   return (
     <div className='cont-items'>
       {hide ? messageCount() : ''}
@@ -92,9 +109,9 @@ const Items = () => {
           ? Espera()
           : arr.map((index, key) => (
             <div key={key} className='conte-Items'>
-              <Link onClick={() => setItems([index, `https://picsum.photos/500/500?random=${arr.indexOf(index)}`])} to={`item/${index.product_name}`} className='Link'>
+              <Link onClick={() => setItems([index, `https://picsum.photos/500/500?random=${itemss.indexOf(index)}`])} to={`item/${index.product_name}`} className='Link'>
                 <article className='card'>
-                  <img loading='lazy' src={`https://picsum.photos/500/500?random=${arr.indexOf(index)}`} alt='imagen de articulo' />
+                  <img loading='lazy' src={`https://picsum.photos/500/500?random=${itemss.indexOf(index)}`} alt='imagen de articulo' />
                   <div className='infoPro'>
                     <p>{index.product_name}</p>
                     {/* <br /> */}
@@ -103,16 +120,31 @@ const Items = () => {
                 </article>
               </Link>
               <div className='actionss'>
-                <button onClick={() => addToCart([index, `https://picsum.photos/500/500?random=${arr.indexOf(index)}`])}>
+                <button onClick={() => addToCart([index, `https://picsum.photos/500/500?random=${itemss.indexOf(index)}`])}>
                   <img src='https://i.postimg.cc/qhB9XLLD/Carrito-Blanc.png' alt='Imagen carrito de compras' />
                 </button>
-                <button onClick={() => addToWish([index, `https://picsum.photos/500/500?random=${arr.indexOf(index)}`])}>
+                <button onClick={() => addToWish([index, `https://picsum.photos/500/500?random=${itemss.indexOf(index)}`])}>
                   <img src='https://i.postimg.cc/YLhZTCT1/CoraW.png' alt='Icono de vfavoritos' />
                 </button>
               </div>
             </div>
           ))}
       </section>
+      {!vali
+        ? ''
+        : (
+          <div className='pages' style={{ height: 'inherit', width: '100%', marginBottom: '20px' }}>
+            <button style={pag === 0 ? { zIndex: '-4' } : { zIndex: '4' }} onClick={pag !== 0 && (() => setPag(pag - 30))}><p>{'<'}</p></button>
+            {pag > 0
+              ? (itemss.length >= pag + 30 ? (<div><p>{(pag / 30)}</p><p style={{ textDecoration: 'underline' }}>{(pag / 30) + 1}</p><p>{(pag / 30) + 2}</p></div>) : (<div><p>{(pag / 30) - 1}</p><p>{(pag / 30)}</p><p style={{ textDecoration: 'underline' }}>{(pag / 30) + 1}</p></div>))
+              : (
+                <div>
+                  <p style={{ textDecoration: 'underline' }}>{(pag / 30) + 1}</p>
+                  <p>{(pag / 30) + 2}</p>
+                  <p>{(pag / 30) + 3}</p>
+                </div>)}
+            <button onClick={() => setPag(pag + 30)}><p>{'>'}</p></button>
+          </div>)}
     </div>
   )
 }

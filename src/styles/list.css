@@ -8,6 +8,7 @@
 /* Tabla de articulos */
 .ElemLista {
   width: 80%;
+  margin-bottom: 20px;
 }
 
 .articulo {
