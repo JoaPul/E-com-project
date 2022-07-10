@@ -94,7 +94,7 @@ article img {
 }
 
 .conte-Items {
-  height: 300px;
+  height: 350px;
   width: 200px;
   border-radius: 10px;
   border: 2px solid #8c8c8c;
@@ -153,14 +153,16 @@ p {
   transition: background-color .25s ease-out, box-shadow .25s ease-out, transform .25s ease-out;
 }
 
-.actionss button:hover {
+.actionss button:hover,
+.pages button:hover {
   background-color: #404040;
   box-shadow: 3px 3px #8C8C8C;
   color: white;
   transform: scale(1.1);
 }
 
-.actionss button:active {
+.actionss button:active,
+.pages button:active {
   background-color: #fff67a;
 }
 
@@ -213,6 +215,7 @@ p {
 }
 
 /*pages*/
+/*cambia de pagina desplazarse por todos los productos*/
 
 .pages {
   display: flex;
@@ -229,6 +232,23 @@ p {
   align-items: center;
   align-content: center;
   flex-direction: row;
+  font-family: 'Fredoka';
+  color: black;
+  text-decoration: none;
+}
+
+/*números de paginas*/
+
+.pages button {
+  border-radius: 10px;
+  color: white;
+  background-color: #8c8c8c;
+  border: 3px solid #262626;
+  transition: background-color .25s ease-out, box-shadow .25s ease-out, transform .25s ease-out;
+}
+
+a {
+  color: black;
 }
 
 @keyframes textAnim {

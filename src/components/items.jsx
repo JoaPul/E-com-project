@@ -58,7 +58,6 @@ const Items = () => {
     // event.target.reset()
   }
 
-  // {/* <button className='searchBTN' type='submit'>Search</button> */}
   const messageCount = () => {
     return (
       <>
@@ -72,16 +71,15 @@ const Items = () => {
 
   const pages = () => {
     const aux = []
-    for (let i = pag; i < pag + 30; i++) {
-      if (itemss[i + pag]) {
-        aux.push(itemss[i + pag])
+    for (let i = pag; i < pag + 20; i++) {
+      if (itemss[i]) {
+        aux.push(itemss[i])
       }
     }
     setArr(aux)
   }
 
   useEffect(() => {
-    setArr()
     pages()
   }, [pag])
 
@@ -90,7 +88,7 @@ const Items = () => {
       setSms('')
     } else {
       if (arr.length !== 0) {
-        if (arr.length !== 30) {
+        if (arr.length !== 20) {
           setSms(<p className='Finded'>We have {arr.length} Items</p>)
         } else {
           setSms(null)
@@ -109,12 +107,12 @@ const Items = () => {
           ? Espera()
           : arr.map((index, key) => (
             <div key={key} className='conte-Items'>
-              <Link onClick={() => setItems([index, `https://picsum.photos/500/500?random=${itemss.indexOf(index)}`])} to={`item/${index.product_name}`} className='Link'>
+              <Link onClick={() => setItems([index, `https://picsum.photos/500/500?random=${itemss.indexOf(index)}`])} to={`/items/item/${index.product_name}`} className='Link'>
                 <article className='card'>
                   <img loading='lazy' src={`https://picsum.photos/500/500?random=${itemss.indexOf(index)}`} alt='imagen de articulo' />
                   <div className='infoPro'>
+                    {/* <p>{index.product_name.length > 13 ? index.product_name.split(' ')[0] : index.product_name}</p> */}
                     <p>{index.product_name}</p>
-                    {/* <br /> */}
                     <p style={{ fontSize: '20px', fontWeight: '1000' }}>$<span style={{ textDecoration: 'underline', textDecorationThickness: '2px', fontSize: '20px', fontWeight: '1000' }}>{index.price}</span></p>
                   </div>
                 </article>
@@ -134,16 +132,22 @@ const Items = () => {
         ? ''
         : (
           <div className='pages' style={{ height: 'inherit', width: '100%', marginBottom: '20px' }}>
-            <button style={pag === 0 ? { zIndex: '-4' } : { zIndex: '4' }} onClick={pag !== 0 && (() => setPag(pag - 30))}><p>{'<'}</p></button>
+            <Link to={`/items/page/${(pag / 20)}`} style={pag === 0 ? { zIndex: '-4' } : { zIndex: '4' }}>
+              <button onClick={() => setPag(pag - 20)}>
+                <p>{'<'}</p>
+              </button>
+            </Link>
             {pag > 0
-              ? (itemss.length >= pag + 30 ? (<div><p>{(pag / 30)}</p><p style={{ textDecoration: 'underline' }}>{(pag / 30) + 1}</p><p>{(pag / 30) + 2}</p></div>) : (<div><p>{(pag / 30) - 1}</p><p>{(pag / 30)}</p><p style={{ textDecoration: 'underline' }}>{(pag / 30) + 1}</p></div>))
+              ? (itemss.length >= pag + 20 ? (<div><Link onClick={() => setPag(pag - 20)} to={`/items/page/${(pag / 20)}`} style={{ padding: '10px' }}>{(pag / 20)}</Link><p style={{ textDecoration: 'underline' }}>{(pag / 20) + 1}</p><Link onClick={() => setPag(pag + (20 * 2))} to={`/items/page/${(pag / 20) + 2}`} style={{ padding: '10px' }}>{(pag / 20) + 2}</Link></div>) : (<div><Link to={`/items/page/${(pag / 20) - 1}`} style={{ padding: '10px' }} onClick={() => setPag(pag - (20 * 2))}>{(pag / 20) - 1}</Link><Link to={`/items/page/${(pag / 20)}`} style={{ padding: '10px' }} onClick={() => setPag(pag - 20)}>{(pag / 20)}</Link><p style={{ textDecoration: 'underline' }}>{(pag / 20) + 1}</p></div>))
               : (
                 <div>
-                  <p style={{ textDecoration: 'underline' }}>{(pag / 30) + 1}</p>
-                  <p>{(pag / 30) + 2}</p>
-                  <p>{(pag / 30) + 3}</p>
+                  <p style={{ textDecoration: 'underline' }}>{(pag / 20) + 1}</p>
+                  <Link onClick={() => setPag(pag + (20 * 2))} to={`/items/page/${(pag / 20) + 2}`} style={{ padding: '10px' }}>{(pag / 20) + 2}</Link>
+                  <Link onClick={() => setPag(pag + (20 * 3))} to={`/items/page/${(pag / 20) + 3}`} style={{ padding: '10px' }}>{(pag / 20) + 3}</Link>
                 </div>)}
-            <button onClick={() => setPag(pag + 30)}><p>{'>'}</p></button>
+            <Link to={`/items/page/${(pag / 20) + 2}`} style={pag >= (itemss.length - 19) ? { zIndex: '-4' } : { zIndex: '4' }}>
+              <button onClick={() => setPag(pag + 20)}><p>{'>'}</p></button>
+            </Link>
           </div>)}
     </div>
   )

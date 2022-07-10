@@ -34,6 +34,10 @@ const Path = () => {
           index: true
         },
         {
+          path: 'page/:number',
+          element: <Items />
+        },
+        {
           path: 'item/:name',
           element: <Item />
         },
