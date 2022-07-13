@@ -343,3 +343,20 @@ a {
     transform: scale(1);
   }
 }
+
+@media screen and (max-width:1000px) {
+  .ProdInfo {
+    display: none;
+  }
+}
+
+@media screen and (max-width:700px) {
+  .C-Item img {
+    height: 120px;
+    width: 200px;
+  }
+
+  .carousel {
+    height: 140px;
+  }
+}
