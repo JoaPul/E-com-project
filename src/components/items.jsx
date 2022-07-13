@@ -4,6 +4,7 @@ import useFetcher from '../hooks/useFetcher'
 
 // funciones de otras librerias/ hooks
 import { useState, useRef, useEffect } from 'react'
+// import Carousel from '@itseasy21/react-elastic-carousel'
 
 // styles
 import '../styles/items.css'
@@ -23,10 +24,15 @@ const Items = () => {
   const [sms, setSms] = useState('')
   // estado para separar paginas y articulos
   const [pag, setPag] = useState(0)
+  // Carrusel y su contador
+  const [car, setCar] = useState([])
+  const [cont, setCont] = useState(0)
 
   if (error) {
     return (<p>{error}</p>)
   }
+
+  // FUNCIONES
 
   // funcion para esperar a que se termine de cargar la infomracion de axios, mientras, llama a un spinner
   const Espera = () => {
@@ -58,6 +64,7 @@ const Items = () => {
     // event.target.reset()
   }
 
+  // funcion para poder hacer la busqueda
   const messageCount = () => {
     return (
       <>
@@ -69,6 +76,7 @@ const Items = () => {
     )
   }
 
+  // funcion que guarda los items por pagina(de 20 en 20)
   const pages = () => {
     const aux = []
     for (let i = pag; i < pag + 20; i++) {
@@ -77,7 +85,30 @@ const Items = () => {
       }
     }
     setArr(aux)
+    setCar(
+      aux.map((index, key) => (
+        <div className='C-Item' key={key}>
+          <img src={`https://picsum.photos/id/${itemss.indexOf(index)}/500/500`} alt='imagen de articulo de fondo' />
+          <div className='ProdInfo'>
+            <h2 className='artNom'>{index.product_name}</h2>
+            <br />
+            <p style={{ fontSize: '20px' }}>${index.price} </p>
+            <br />
+            <p><span style={{ fontWeight: '1000' }}>Category:</span> {index.category}</p>
+            <br />
+            <p><span style={{ fontWeight: '1000' }}>Brand:</span> {index.brand}</p>
+          </div>
+        </div>
+      )))
   }
+
+  // funcion para setear a 0 cont cuando cambie de pagina
+  const pagCha = (i) => {
+    i ? setPag(pag - 20) : setPag(pag + 20)
+    setCont(0)
+  }
+
+  // useEffects
 
   useEffect(() => {
     pages()
@@ -105,36 +136,48 @@ const Items = () => {
       <section className='div-items'>
         {!vali
           ? Espera()
-          : arr.map((index, key) => (
-            <div key={key} className='conte-Items'>
-              <Link onClick={() => setItems([index, `https://picsum.photos/500/500?random=${itemss.indexOf(index)}`])} to={`/items/item/${index.product_name}`} className='Link'>
-                <article className='card'>
-                  <img loading='lazy' src={`https://picsum.photos/500/500?random=${itemss.indexOf(index)}`} alt='imagen de articulo' />
-                  <div className='infoPro'>
-                    {/* <p>{index.product_name.length > 13 ? index.product_name.split(' ')[0] : index.product_name}</p> */}
-                    <p>{index.product_name}</p>
-                    <p style={{ fontSize: '20px', fontWeight: '1000' }}>$<span style={{ textDecoration: 'underline', textDecorationThickness: '2px', fontSize: '20px', fontWeight: '1000' }}>{index.price}</span></p>
-                  </div>
-                </article>
-              </Link>
-              <div className='actionss'>
-                <button onClick={() => addToCart([index, `https://picsum.photos/500/500?random=${itemss.indexOf(index)}`])}>
-                  <img src='https://i.postimg.cc/qhB9XLLD/Carrito-Blanc.png' alt='Imagen carrito de compras' />
-                </button>
-                <button onClick={() => addToWish([index, `https://picsum.photos/500/500?random=${itemss.indexOf(index)}`])}>
-                  <img src='https://i.postimg.cc/YLhZTCT1/CoraW.png' alt='Icono de vfavoritos' />
-                </button>
+          : (
+            <section className='todo-items'>
+              <h1 style={{ fontFamily: 'Fredoka', textAlign: 'center', fontSize: '25px', margin: '0px', paddingTop: '20px', paddingBottom: '15px', color: '#595959' }}>Featured</h1>
+              <div className='carousel'>
+                <div className='C-in'>
+                  <button style={cont === 0 ? { display: 'none', marginLeft: '10px' } : { display: 'inline-block', marginLeft: '10px' }} onClick={() => setCont(cont - 1)}>{'<'}</button>
+                  {car[cont]}
+                  <button style={cont === 19 ? { display: 'none', marginRight: '10px' } : { display: 'inline-block', marginRight: '10px' }} onClick={() => setCont(cont + 1)}>{'>'}</button>
+                </div>
               </div>
-            </div>
-          ))}
+              <div className='articles'>
+                {arr.map((index, key) => (
+                  <div key={key} className='conte-Items'>
+                    <Link onClick={() => setItems([index, `https://picsum.photos/id/${itemss.indexOf(index)}/500/500`])} to={`/items/item/${index.product_name}`} className='Link'>
+                      <article className='card'>
+                        <img loading='lazy' src={`https://picsum.photos/id/${itemss.indexOf(index)}/500/500`} alt='imagen de articulo' />
+                        <div className='infoPro'>
+                          {/* <p>{index.product_name.length > 13 ? index.product_name.split(' ')[0] : index.product_name}</p> */}
+                          <p>{index.product_name}</p>
+                          <p style={{ fontSize: '20px', fontWeight: '1000' }}>$<span style={{ textDecoration: 'underline', textDecorationThickness: '2px', fontSize: '20px', fontWeight: '1000' }}>{index.price}</span></p>
+                        </div>
+                      </article>
+                    </Link>
+                    <div className='actionss'>
+                      <button onClick={() => addToCart([index, `https://picsum.photos/id/${itemss.indexOf(index)}/500/500`])}>
+                        <img src='https://i.postimg.cc/qhB9XLLD/Carrito-Blanc.png' alt='Imagen carrito de compras' />
+                      </button>
+                      <button onClick={() => addToWish([index, `https://picsum.photos/id/${itemss.indexOf(index)}/500/500`])}>
+                        <img src='https://i.postimg.cc/YLhZTCT1/CoraW.png' alt='Icono de vfavoritos' />
+                      </button>
+                    </div>
+                  </div>))}
+              </div>
+            </section>)}
       </section>
       {!vali
         ? ''
         : (
-          <div className='pages' style={{ height: 'inherit', width: '100%', marginBottom: '20px' }}>
+          <div className='pages' style={{ height: '55px', width: '100%', marginBottom: '20px' }}>
             <Link to={`/items/page/${(pag / 20)}`} style={pag === 0 ? { zIndex: '-4' } : { zIndex: '4' }}>
-              <button onClick={() => setPag(pag - 20)}>
-                <p>{'<'}</p>
+              <button onClick={() => pagCha(true)}>
+                <p style={{ fontSize: '20px', padding: '5px' }}>{'<'}</p>
               </button>
             </Link>
             {pag > 0
@@ -146,7 +189,7 @@ const Items = () => {
                   <Link onClick={() => setPag(pag + (20 * 3))} to={`/items/page/${(pag / 20) + 3}`} style={{ padding: '10px' }}>{(pag / 20) + 3}</Link>
                 </div>)}
             <Link to={`/items/page/${(pag / 20) + 2}`} style={pag >= (itemss.length - 19) ? { zIndex: '-4' } : { zIndex: '4' }}>
-              <button onClick={() => setPag(pag + 20)}><p>{'>'}</p></button>
+              <button onClick={() => pagCha(false)}><p style={{ fontSize: '20px', padding: '5px' }}>{'>'}</p></button>
             </Link>
           </div>)}
     </div>
