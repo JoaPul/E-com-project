@@ -87,7 +87,7 @@ const Items = () => {
     setArr(aux)
     setCar(
       aux.map((index, key) => (
-        <div className='C-Item' key={key}>
+        <Link onClick={() => setItems([index, `https://picsum.photos/id/${itemss.indexOf(index)}/500/500`])} to={`/items/item/${index.product_name}`} className='C-Item' key={key}>
           <img src={`https://picsum.photos/id/${itemss.indexOf(index)}/500/500`} alt='imagen de articulo de fondo' />
           <div className='ProdInfo'>
             <h2 className='artNom'>{index.product_name}</h2>
@@ -98,7 +98,7 @@ const Items = () => {
             <br />
             <p><span style={{ fontWeight: '1000' }}>Brand:</span> {index.brand}</p>
           </div>
-        </div>
+        </Link>
       )))
   }
 
