@@ -5,7 +5,7 @@ E-commerce template for a small Store, Login, register, wishlist and cart workin
 Responsive all the time.
 
 ## Video
-[![Watch the video](https://imgur.com/DlkHyMB)](https://youtu.be/bAGKg3FScsA)
+[![Watch the video](https://i.imgur.com/DlkHyMB.png)](https://youtu.be/bAGKg3FScsA)
 
 ## Stack Tecnológico 
 
