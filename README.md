@@ -1,5 +1,8 @@
 # E-Commerce
 
+##Visit the site
+https://incredible-salamander-e34003.netlify.app
+
 ## Project details
 E-commerce template for a small Store, Login, register, wishlist and cart working.
 Responsive all the time.
