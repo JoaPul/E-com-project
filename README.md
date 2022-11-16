@@ -17,3 +17,6 @@ Responsive all the time.
 3. JAVASCRIPT
 4. React
 5. Express
+6. npm
+7. node.js
+8. axios
